@@ -1,0 +1,29 @@
+TODO LIST :
+
+- Need of global realease function
+- Texture class
+- Asset manager
+- Multiple windows handling
+- Text rendering
+- OpengGl Manager
+- Renderer
+- World manager
+- Application states
+- Create Renderable object
+- Simple drawing functions
+- Error handling in camera(parameters check)
+- Camera2D buffer problems to fix
+- Rewrite Math ( namespace , division on files)
+- Take timer functions from time file to another file
+- Timer Tests
+- Init file reader
+- Application class
+- Window class
+- Input handling
+- Messaging system
+
+DONE :
+
+- Camera functions 
+- Color namespace
+- Timers

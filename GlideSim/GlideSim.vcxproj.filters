@@ -1,0 +1,359 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="Assets">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="Assets\Shaders">
+      <UniqueIdentifier>{2fc0057a-2491-4da1-abca-b2b870aa9723}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="External Libs">
+      <UniqueIdentifier>{cac42177-e3bf-4c72-8151-9a8f6fa5e5fa}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="External Libs\GLFW">
+      <UniqueIdentifier>{a38ecce4-e59b-4ea8-9326-80b653e83d69}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="External Libs\Assimp">
+      <UniqueIdentifier>{2a9d252a-c83c-438b-9994-f9999f006254}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="External Libs\GLM">
+      <UniqueIdentifier>{5e7beaff-e799-47a7-919e-7d27196725ff}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="External Libs\GLEW">
+      <UniqueIdentifier>{f078ac8f-8f9a-447f-a2e3-fd03b210b923}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="External Libs\SOIL">
+      <UniqueIdentifier>{da18cd31-d8f2-411e-8055-23d72e2cfa80}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="camera.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="color.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="error.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="logger.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="main.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="math.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="platform.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="renderer.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="shader.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="texture.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="time.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="timer.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="utilities.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="window.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="simple_window.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="main_app.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="camera.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="color.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="error.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="logger.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="math.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="platform.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="renderer.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="shader.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="texture.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="time.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="timer.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="utilities.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="window.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="simple_window.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="main_app.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Libs\include\ASSIMP\ai_assert.h">
+      <Filter>External Libs\Assimp</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Libs\include\ASSIMP\anim.h">
+      <Filter>External Libs\Assimp</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Libs\include\ASSIMP\camera.h">
+      <Filter>External Libs\Assimp</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Libs\include\ASSIMP\cexport.h">
+      <Filter>External Libs\Assimp</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Libs\include\ASSIMP\cfileio.h">
+      <Filter>External Libs\Assimp</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Libs\include\ASSIMP\cimport.h">
+      <Filter>External Libs\Assimp</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Libs\include\ASSIMP\color4.h">
+      <Filter>External Libs\Assimp</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Libs\include\ASSIMP\config.h">
+      <Filter>External Libs\Assimp</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Libs\include\ASSIMP\DefaultLogger.hpp">
+      <Filter>External Libs\Assimp</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Libs\include\ASSIMP\defs.h">
+      <Filter>External Libs\Assimp</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Libs\include\ASSIMP\Exporter.hpp">
+      <Filter>External Libs\Assimp</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Libs\include\ASSIMP\Importer.hpp">
+      <Filter>External Libs\Assimp</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Libs\include\ASSIMP\importerdesc.h">
+      <Filter>External Libs\Assimp</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Libs\include\ASSIMP\IOStream.hpp">
+      <Filter>External Libs\Assimp</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Libs\include\ASSIMP\IOSystem.hpp">
+      <Filter>External Libs\Assimp</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Libs\include\ASSIMP\light.h">
+      <Filter>External Libs\Assimp</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Libs\include\ASSIMP\Logger.hpp">
+      <Filter>External Libs\Assimp</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Libs\include\ASSIMP\LogStream.hpp">
+      <Filter>External Libs\Assimp</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Libs\include\ASSIMP\material.h">
+      <Filter>External Libs\Assimp</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Libs\include\ASSIMP\matrix3x3.h">
+      <Filter>External Libs\Assimp</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Libs\include\ASSIMP\matrix4x4.h">
+      <Filter>External Libs\Assimp</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Libs\include\ASSIMP\mesh.h">
+      <Filter>External Libs\Assimp</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Libs\include\ASSIMP\metadata.h">
+      <Filter>External Libs\Assimp</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Libs\include\ASSIMP\NullLogger.hpp">
+      <Filter>External Libs\Assimp</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Libs\include\ASSIMP\postprocess.h">
+      <Filter>External Libs\Assimp</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Libs\include\ASSIMP\ProgressHandler.hpp">
+      <Filter>External Libs\Assimp</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Libs\include\ASSIMP\quaternion.h">
+      <Filter>External Libs\Assimp</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Libs\include\ASSIMP\scene.h">
+      <Filter>External Libs\Assimp</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Libs\include\ASSIMP\texture.h">
+      <Filter>External Libs\Assimp</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Libs\include\ASSIMP\types.h">
+      <Filter>External Libs\Assimp</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Libs\include\ASSIMP\vector2.h">
+      <Filter>External Libs\Assimp</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Libs\include\ASSIMP\vector3.h">
+      <Filter>External Libs\Assimp</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Libs\include\ASSIMP\version.h">
+      <Filter>External Libs\Assimp</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Libs\include\GLEW\eglew.h">
+      <Filter>External Libs\GLEW</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Libs\include\GLEW\glew.h">
+      <Filter>External Libs\GLEW</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Libs\include\GLEW\glxew.h">
+      <Filter>External Libs\GLEW</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Libs\include\GLEW\wglew.h">
+      <Filter>External Libs\GLEW</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Libs\include\GLFW\glfw3.h">
+      <Filter>External Libs\GLFW</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Libs\include\GLFW\glfw3native.h">
+      <Filter>External Libs\GLFW</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Libs\include\GLM\common.hpp">
+      <Filter>External Libs\GLM</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Libs\include\GLM\exponential.hpp">
+      <Filter>External Libs\GLM</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Libs\include\GLM\ext.hpp">
+      <Filter>External Libs\GLM</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Libs\include\GLM\fwd.hpp">
+      <Filter>External Libs\GLM</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Libs\include\GLM\geometric.hpp">
+      <Filter>External Libs\GLM</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Libs\include\GLM\glm.hpp">
+      <Filter>External Libs\GLM</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Libs\include\GLM\integer.hpp">
+      <Filter>External Libs\GLM</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Libs\include\GLM\mat2x2.hpp">
+      <Filter>External Libs\GLM</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Libs\include\GLM\mat2x3.hpp">
+      <Filter>External Libs\GLM</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Libs\include\GLM\mat2x4.hpp">
+      <Filter>External Libs\GLM</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Libs\include\GLM\mat3x2.hpp">
+      <Filter>External Libs\GLM</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Libs\include\GLM\mat3x3.hpp">
+      <Filter>External Libs\GLM</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Libs\include\GLM\mat3x4.hpp">
+      <Filter>External Libs\GLM</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Libs\include\GLM\mat4x2.hpp">
+      <Filter>External Libs\GLM</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Libs\include\GLM\mat4x3.hpp">
+      <Filter>External Libs\GLM</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Libs\include\GLM\mat4x4.hpp">
+      <Filter>External Libs\GLM</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Libs\include\GLM\matrix.hpp">
+      <Filter>External Libs\GLM</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Libs\include\GLM\packing.hpp">
+      <Filter>External Libs\GLM</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Libs\include\GLM\trigonometric.hpp">
+      <Filter>External Libs\GLM</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Libs\include\GLM\vec2.hpp">
+      <Filter>External Libs\GLM</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Libs\include\GLM\vec3.hpp">
+      <Filter>External Libs\GLM</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Libs\include\GLM\vec4.hpp">
+      <Filter>External Libs\GLM</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Libs\include\GLM\vector_relational.hpp">
+      <Filter>External Libs\GLM</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Libs\include\SOIL\image_DXT.h">
+      <Filter>External Libs\SOIL</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Libs\include\SOIL\image_helper.h">
+      <Filter>External Libs\SOIL</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Libs\include\SOIL\SOIL.h">
+      <Filter>External Libs\SOIL</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Libs\include\SOIL\stb_image_aug.h">
+      <Filter>External Libs\SOIL</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Libs\include\SOIL\stbi_DDS_aug.h">
+      <Filter>External Libs\SOIL</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Libs\include\SOIL\stbi_DDS_aug_c.h">
+      <Filter>External Libs\SOIL</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\Shaders\color_fragment.glsl">
+      <Filter>Assets\Shaders</Filter>
+    </None>
+    <None Include="..\Shaders\color_vertex.glsl">
+      <Filter>Assets\Shaders</Filter>
+    </None>
+    <None Include="..\Shaders\texture_fragment.glsl">
+      <Filter>Assets\Shaders</Filter>
+    </None>
+    <None Include="..\Shaders\texture_vertex.glsl">
+      <Filter>Assets\Shaders</Filter>
+    </None>
+    <None Include="..\Libs\include\ASSIMP\material.inl">
+      <Filter>External Libs\Assimp</Filter>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="..\TODO.txt" />
+  </ItemGroup>
+</Project>
