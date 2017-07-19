@@ -138,15 +138,12 @@ xcopy /y /d "$(SolutionDir)Images\*.*" "$(SolutionDir)Build\$(Configuration)\"</
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="bmp_loading.cpp" />
     <ClCompile Include="camera.cpp" />
     <ClCompile Include="color.cpp" />
     <ClCompile Include="config_loader.cpp" />
     <ClCompile Include="error.cpp" />
     <ClCompile Include="logger.cpp" />
-    <ClCompile Include="test_main.cpp">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
-    </ClCompile>
     <ClCompile Include="main_app.cpp" />
     <ClCompile Include="math.cpp" />
     <ClCompile Include="main.cpp" />
@@ -237,6 +234,7 @@ xcopy /y /d "$(SolutionDir)Images\*.*" "$(SolutionDir)Build\$(Configuration)\"</
     <ClInclude Include="config_loader.h" />
     <ClInclude Include="core.h" />
     <ClInclude Include="error.h" />
+    <ClInclude Include="input_handler.h" />
     <ClInclude Include="logger.h" />
     <ClInclude Include="main_app.h" />
     <ClInclude Include="math.h" />

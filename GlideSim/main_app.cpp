@@ -35,6 +35,7 @@ void MainApplication::init()
 {
 	logger::init();
 
+	srand((unsigned int)time(NULL));
 
 	initWindow(window_width, window_height, (char *)app_name.c_str());
 
@@ -45,6 +46,8 @@ void MainApplication::init()
 	fpsGovernor.setLimit(30);
 	fpsGovernor.Start();
 
+	core::renderer.init();
+
 
 	logger::logSystemInfo();
 
@@ -53,9 +56,11 @@ void MainApplication::init()
 
 void MainApplication::release()
 {
+	logger::msg("Exiting ...", logger::info);
+
 	closeWindow();
 
-	logger::msg("Exiting ...", logger::info);
+	core::renderer.release();
 
 	exit(EXIT_SUCCESS);
 }
@@ -70,6 +75,8 @@ void MainApplication::update()
 	fpsCounter.frameTick();
 	fpsGovernor.frameTick();
 
+	core::renderer.update();
+
 	//logger::msg("Fps = " + std::to_string(fpsCounter.getFPS()));
 	printf("FPS = %lf\n", fpsCounter.getFPS());
 }
@@ -83,5 +90,5 @@ void MainApplication::render()
 
 void MainApplication::timer()
 {
-	sleep(33);
+	//sleep(33);
 }
