@@ -140,11 +140,16 @@ xcopy /y /d "$(SolutionDir)Images\*.*" "$(SolutionDir)Build\$(Configuration)\"</
   <ItemGroup>
     <ClCompile Include="camera.cpp" />
     <ClCompile Include="color.cpp" />
+    <ClCompile Include="config_loader.cpp" />
     <ClCompile Include="error.cpp" />
     <ClCompile Include="logger.cpp" />
-    <ClCompile Include="main.cpp" />
+    <ClCompile Include="test_main.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
     <ClCompile Include="main_app.cpp" />
     <ClCompile Include="math.cpp" />
+    <ClCompile Include="main.cpp" />
     <ClCompile Include="platform.cpp" />
     <ClCompile Include="renderer.cpp" />
     <ClCompile Include="shader.cpp" />
@@ -224,14 +229,20 @@ xcopy /y /d "$(SolutionDir)Images\*.*" "$(SolutionDir)Build\$(Configuration)\"</
     <ClInclude Include="..\Libs\include\SOIL\stbi_DDS_aug.h" />
     <ClInclude Include="..\Libs\include\SOIL\stbi_DDS_aug_c.h" />
     <ClInclude Include="..\Libs\include\SOIL\stb_image_aug.h" />
+    <ClInclude Include="actor.h" />
+    <ClInclude Include="asset_manager.h" />
+    <ClInclude Include="bmp_loading.h" />
     <ClInclude Include="camera.h" />
     <ClInclude Include="color.h" />
+    <ClInclude Include="config_loader.h" />
+    <ClInclude Include="core.h" />
     <ClInclude Include="error.h" />
     <ClInclude Include="logger.h" />
     <ClInclude Include="main_app.h" />
     <ClInclude Include="math.h" />
     <ClInclude Include="platform.h" />
     <ClInclude Include="renderer.h" />
+    <ClInclude Include="scene.h" />
     <ClInclude Include="shader.h" />
     <ClInclude Include="simple_window.h" />
     <ClInclude Include="texture.h" />
@@ -239,6 +250,7 @@ xcopy /y /d "$(SolutionDir)Images\*.*" "$(SolutionDir)Build\$(Configuration)\"</
     <ClInclude Include="timer.h" />
     <ClInclude Include="utilities.h" />
     <ClInclude Include="window.h" />
+    <ClInclude Include="window_manager.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="..\Libs\include\ASSIMP\material.inl" />

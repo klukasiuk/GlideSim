@@ -3,15 +3,17 @@
 #include <stdlib.h>
 #include <stdio.h>
 
+#include "error.h"
+
 void basic_key_callback(GLFWwindow* window, int key, int scancode, int action, int mods)
 {
 	if (key == GLFW_KEY_ESCAPE && action == GLFW_PRESS)
 		glfwSetWindowShouldClose(window, GLFW_TRUE);
 }
 
-void basic_error_callback(int error, const char* description)
+void basic_error_callback(int error_code, const char* description)
 {
-	fprintf(stderr, "Error: %s\n", description);
+	error::msg(description, "Window creation error", error_code);
 }
 
 Window::Window(int Width, int Height, char * Name)
@@ -52,6 +54,7 @@ Window::Window(int Width, int Height, char * Name)
 
 Window::~Window()
 {
+	glfwDestroyWindow(window);
 }
 
 GLFWwindow * Window::getHandle()

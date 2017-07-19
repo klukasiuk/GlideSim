@@ -2,7 +2,7 @@
 
 #include <stdio.h>
 
-extern void release();
+void release() {};
 
 bool showMsgBox     = true;
 bool logErrors      = true;

@@ -14,6 +14,8 @@ private :
 
 	std::string WindowName;
 
+	bool focus;
+
 public :
 
 	Window(int Width, int Height, char * WindowName);
@@ -22,6 +24,4 @@ public :
    GLFWwindow * getHandle();
 
    void makeCurrent();
-
-
 };

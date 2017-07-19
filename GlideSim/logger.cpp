@@ -3,6 +3,8 @@
 #include <fstream>
 #include <iostream>
 
+#include <GLFW/glfw3.h>
+
 using std::ofstream;
 using std::cout;
 

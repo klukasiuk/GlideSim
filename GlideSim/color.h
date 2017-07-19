@@ -4,7 +4,6 @@
 
 namespace color
 {
-	
 	glm::vec3 RGB(int r, int g, int b);
 	glm::vec4 RGBA(int r, int g, int b, int a);
 

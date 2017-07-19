@@ -3,8 +3,7 @@
 #include <string>
 
 #include "platform.h"
-#include "timer.h"
-#include "utilities.h"
+#include "time.h"
 
 using std::string;
 

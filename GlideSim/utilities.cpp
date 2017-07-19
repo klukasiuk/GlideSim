@@ -1,6 +1,12 @@
 #include "utilities.h"
 
-string getOglInfo()
+#include <stdint.h>
+#include <atomic>
+
+std::atomic<uint32_t> uid = 0;
+
+
+int getUID()
 {
-	return string();
+	return uid++;
 }

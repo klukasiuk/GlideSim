@@ -104,7 +104,7 @@ void FpsCounter::frameTick()
 	LastTime = getTime();
 }
 
-float FpsCounter::getFPS()
+double FpsCounter::getFPS()
 {
 	return fps;
 }

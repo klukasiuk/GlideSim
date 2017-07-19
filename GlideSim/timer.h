@@ -33,7 +33,7 @@ private :
 
 	int ticks;
 
-	float fps;
+	double fps;
 
 	bool running;
 
@@ -50,7 +50,7 @@ public :
 
    void frameTick();
 
-   float getFPS();
+   double getFPS();
 
    double getDeltaTime();
 };
