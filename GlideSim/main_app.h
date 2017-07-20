@@ -23,8 +23,6 @@ private :
 	FpsCounter  fpsCounter;
 	FpsGovernor fpsGovernor;
 
-	InputHandler inputHandler;
-
 	void init();
 	void release();
 

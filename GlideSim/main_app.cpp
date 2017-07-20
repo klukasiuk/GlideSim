@@ -48,6 +48,7 @@ void MainApplication::init()
 
 	core::renderer.init();
 
+	//core::configLoader.load("config.txt");
 
 	logger::logSystemInfo();
 
@@ -69,7 +70,7 @@ void MainApplication::input()
 {
 	glfwPollEvents();
 
-	inputHandler.process_input();
+	core::inputHandler.process_input();
 
 	if (core::simpleWindow.shouldClose())
 		run = false;

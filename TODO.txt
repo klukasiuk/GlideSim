@@ -21,6 +21,7 @@ TODO LIST :
 - Window class
 - Input handling
 - Messaging system
+- Camera lookAt mode
 
 DONE :
 
