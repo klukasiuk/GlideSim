@@ -7,8 +7,6 @@ class Renderer
 {
 private :
 
-	Camera cam;
-
 	GLuint VertexArrayID;
 	GLuint vertexbuffer;
 	GLuint uvbuffer;
@@ -26,6 +24,8 @@ private :
 	Shader * myShader;
 
 public :
+
+	Camera cam;
 
 	void init();
 

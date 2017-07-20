@@ -23,17 +23,16 @@ public :
 
 class Camera : public CameraInterface
 {
-private :
+public :
 
 	glm::vec3 position;
 	glm::vec3 direction;
 	glm::vec3 up;
+	glm::vec3 right;
 
 	float ratio;
 
 	float fov;
-
-public :
 
 	Camera();
    ~Camera();

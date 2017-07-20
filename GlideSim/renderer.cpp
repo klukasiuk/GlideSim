@@ -187,7 +187,7 @@ void Renderer::update()
 {
 	for (int i = 0; i < cubes; i++)
 	{
-		float rate = 0.02 * ((float)rand()) / RAND_MAX;
+		float rate = 0.01 + 0.02 * ((float)rand()) / RAND_MAX;
 
 		modelMatrix[i] = glm::rotate(modelMatrix[i], rate, glm::vec3(0, 1, 0));
 		modelMatrix[i] = glm::rotate(modelMatrix[i], rate, glm::vec3(1, 0, 0));

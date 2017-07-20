@@ -1,5 +1,6 @@
 #pragma once
 
+
 class InputHandler
 {
 private :
@@ -8,6 +9,6 @@ private :
 
 public :
 
-
+	void process_input();
 
 };

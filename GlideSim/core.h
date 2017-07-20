@@ -7,11 +7,14 @@
 #include "asset_manager.h"
 #include "renderer.h"
 
+
 namespace core
 {
-	ConfigLoader configLoader;
+	extern SimpleWindow simpleWindow;
 
-	AssetManager assetManager;
+	extern ConfigLoader configLoader;
 
-	Renderer renderer;
+	extern AssetManager assetManager;
+
+	extern Renderer renderer;
 }

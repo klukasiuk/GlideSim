@@ -1,12 +1,27 @@
 #pragma once
 
+#include <GLEW/glew.h>
+#include <GLFW/glfw3.h>
 
-void initWindow(int width , int height, char * name);
+class SimpleWindow
+{
 
-void closeWindow();
+public :
 
-bool shouldClose();
+	// Window variables
+	GLFWwindow * window;
 
-void swapBuffer();
+	int WindowWidth = 0;
+	int WindowHeight = 0;
 
-void initOGL();
+	void initWindow(int width, int height, char * name);
+
+	void closeWindow();
+
+	bool shouldClose();
+
+	void swapBuffer();
+
+	void initOGL();
+
+};

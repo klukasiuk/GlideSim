@@ -1,7 +1,6 @@
 #include "simple_window.h"
 
-#include <GLEW/glew.h>
-#include <GLFW/glfw3.h>
+
 
 #include <string>
 
@@ -9,15 +8,6 @@
 
 
 using std::string;
-
-
-// Window variables
-
-GLFWwindow * window;
-
-int WindowWidth = 0;
-int WindowHeight = 0;
-
 
 // Basic Callbacks
 
@@ -39,7 +29,7 @@ void key_callback(GLFWwindow* window, int key, int scancode, int action, int mod
 
 // Window handling
 
-void initWindow(int width, int height, char * name)
+void SimpleWindow::initWindow(int width, int height, char * name)
 {
 	WindowWidth = width;
 	WindowHeight = height;
@@ -76,21 +66,24 @@ void initWindow(int width, int height, char * name)
 	glfwSetKeyCallback(window, key_callback);
 
 	glfwMakeContextCurrent(window);
+
+	glfwSetCursorPos(window, WindowWidth / 2, WindowHeight / 2);
+	glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_HIDDEN);
 }
 
-void closeWindow()
+void SimpleWindow::closeWindow()
 {
 	glfwDestroyWindow(window);
 
 	glfwTerminate();
 }
 
-bool shouldClose()
+bool SimpleWindow::shouldClose()
 {
 	return glfwWindowShouldClose(window);
 }
 
-void swapBuffer()
+void SimpleWindow::swapBuffer()
 {
 	glfwSwapBuffers(window);
 }
@@ -98,7 +91,7 @@ void swapBuffer()
 
 // OpenGL initialization
 
-void initOGL()
+void SimpleWindow::initOGL()
 {
 	// GLEW
 

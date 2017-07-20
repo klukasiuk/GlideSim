@@ -5,6 +5,7 @@
 #include <string>
 
 #include "timer.h"
+#include "input_handler.h"
 
 using std::vector;
 using std::thread;
@@ -21,6 +22,8 @@ private :
 
 	FpsCounter  fpsCounter;
 	FpsGovernor fpsGovernor;
+
+	InputHandler inputHandler;
 
 	void init();
 	void release();

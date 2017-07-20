@@ -7,6 +7,7 @@ Camera::Camera()
 	position  = glm::vec3(0, 0, 0);
 	direction = glm::vec3(0, 0, 1);
 	up        = glm::vec3(0, 1, 0);
+	right     = glm::vec3(-1, 0, 0);
 
 	fov = 90;
 	ratio = 4.0f / 3.0f;
@@ -18,7 +19,7 @@ Camera::Camera()
 	ViewChanged       = false;
 
 	Projection = glm::perspective(glm::radians(fov), ratio, near, far);
-	View = glm::lookAt(position, direction, up);
+	View = glm::lookAt(position, position + direction, up);
 
 	VP = Projection * View;
 }
@@ -45,18 +46,22 @@ void Camera::translate(float x, float y, float z)
 
 void Camera::rotate(glm::vec3 anglesVec)
 {
-	direction = glm::rotate(direction, glm::radians(anglesVec.x), glm::vec3(1, 0, 0));
-	direction = glm::rotate(direction, glm::radians(anglesVec.y), glm::vec3(0, 1, 0));
-	direction = glm::rotate(direction, glm::radians(anglesVec.z), glm::vec3(0, 0, 1));
+	//direction = glm::rotate(direction, glm::radians(anglesVec.x), glm::vec3(1, 0, 0));
+	direction = glm::rotate(direction, glm::radians(anglesVec.y),right);
+	direction = glm::rotate(direction, glm::radians(anglesVec.z),up);
+
+	right = -glm::cross(up, direction);
 
 	ViewChanged = true;
 }
 
 void Camera::rotate(float x, float y, float z)
 {
-	direction = glm::rotate(direction, glm::radians(x), glm::vec3(1, 0, 0));
-	direction = glm::rotate(direction, glm::radians(y), glm::vec3(0, 1, 0));
-	direction = glm::rotate(direction, glm::radians(z), glm::vec3(0, 0, 1));
+	//direction = glm::rotate(direction, glm::radians(x), glm::vec3(1, 0, 0));
+	direction = glm::rotate(direction, glm::radians(y), right);
+	direction = glm::rotate(direction, glm::radians(z),up);
+
+	right = -glm::cross(up, direction);
 
 	ViewChanged = true;
 }
@@ -64,6 +69,8 @@ void Camera::rotate(float x, float y, float z)
 void Camera::rotate(glm::vec3 axis, float angle)
 {
 	direction =  glm::rotate(direction, glm::radians(angle), axis);
+
+	right = -glm::cross(up, direction);
 
 	ViewChanged = true;
 }
@@ -79,13 +86,18 @@ void Camera::lookAt(glm::vec3 point)
 {
 	direction = point - position;
 
+	direction = direction * (1.0f / glm::length(direction));
+
 	ViewChanged = true;
 }
 
 void Camera::setPosTarg(glm::vec3 pos, glm::vec3 targ)
 {
 	position = pos;
+
 	direction = targ - pos;
+
+	direction = direction * (1.0f / glm::length(direction));
 
 	ViewChanged = true;
 }
@@ -129,7 +141,7 @@ glm::mat4 Camera::getViewProj()
 
 	if (ViewChanged)
 	{
-		View = glm::lookAt(position, direction, up);
+		View = glm::lookAt(position, position + direction, up);
 		ViewChanged = false;
 	}
 

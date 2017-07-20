@@ -37,9 +37,9 @@ void MainApplication::init()
 
 	srand((unsigned int)time(NULL));
 
-	initWindow(window_width, window_height, (char *)app_name.c_str());
+	core::simpleWindow.initWindow(window_width, window_height, (char *)app_name.c_str());
 
-	initOGL();
+	core::simpleWindow.initOGL();
 
 	fpsCounter.Start();
 
@@ -58,7 +58,7 @@ void MainApplication::release()
 {
 	logger::msg("Exiting ...", logger::info);
 
-	closeWindow();
+	core::simpleWindow.closeWindow();
 
 	core::renderer.release();
 
@@ -68,6 +68,11 @@ void MainApplication::release()
 void MainApplication::input()
 {
 	glfwPollEvents();
+
+	inputHandler.process_input();
+
+	if (core::simpleWindow.shouldClose())
+		run = false;
 }
 
 void MainApplication::update()
@@ -78,14 +83,14 @@ void MainApplication::update()
 	core::renderer.update();
 
 	//logger::msg("Fps = " + std::to_string(fpsCounter.getFPS()));
-	printf("FPS = %lf\n", fpsCounter.getFPS());
+	//printf("FPS = %lf\n", fpsCounter.getFPS());
 }
 
 void MainApplication::render()
 {
 	core::renderer.draw();
 
-	swapBuffer();
+	core::simpleWindow.swapBuffer();
 }
 
 void MainApplication::timer()

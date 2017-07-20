@@ -142,7 +142,9 @@ xcopy /y /d "$(SolutionDir)Images\*.*" "$(SolutionDir)Build\$(Configuration)\"</
     <ClCompile Include="camera.cpp" />
     <ClCompile Include="color.cpp" />
     <ClCompile Include="config_loader.cpp" />
+    <ClCompile Include="core.cpp" />
     <ClCompile Include="error.cpp" />
+    <ClCompile Include="input_handler.cpp" />
     <ClCompile Include="logger.cpp" />
     <ClCompile Include="main_app.cpp" />
     <ClCompile Include="math.cpp" />
@@ -238,6 +240,7 @@ xcopy /y /d "$(SolutionDir)Images\*.*" "$(SolutionDir)Build\$(Configuration)\"</
     <ClInclude Include="logger.h" />
     <ClInclude Include="main_app.h" />
     <ClInclude Include="math.h" />
+    <ClInclude Include="messaging.h" />
     <ClInclude Include="platform.h" />
     <ClInclude Include="renderer.h" />
     <ClInclude Include="scene.h" />
