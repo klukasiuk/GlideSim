@@ -68,7 +68,9 @@ void SimpleWindow::initWindow(int width, int height, char * name)
 	glfwMakeContextCurrent(window);
 
 	glfwSetCursorPos(window, WindowWidth / 2, WindowHeight / 2);
-	glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_HIDDEN);
+
+	glfwSetInputMode(window, GLFW_STICKY_KEYS, GL_TRUE);
+	glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_DISABLED);
 }
 
 void SimpleWindow::closeWindow()

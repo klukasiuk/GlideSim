@@ -3,11 +3,10 @@
 #include "math.h"
 
 
-
 Timer::Timer()
 {
-	StartTime = 0.0;
-	ElapsedTime = 0.0;
+	startTime = 0.0;
+	elapsedTime = 0.0;
 
 	running = false;
 }
@@ -16,24 +15,24 @@ Timer::~Timer()
 {
 }
 
-void Timer::Start()
+void Timer::start()
 {
 	running = true;
 
-	StartTime = getTime();
+	startTime = getTime();
 }
 
-void Timer::Stop()
+void Timer::stop()
 {
 	running = false;
 
-	ElapsedTime += getTime() - StartTime;
+	elapsedTime += getTime() - startTime;
 }
 
-void Timer::Reset()
+void Timer::reset()
 {
-	StartTime = 0.0;
-	ElapsedTime = 0.0;
+	startTime = 0.0;
+	elapsedTime = 0.0;
 
 	running = false;
 }
@@ -41,42 +40,40 @@ void Timer::Reset()
 double Timer::getElapsedTime()
 {
 	if (running)
-		return ElapsedTime + (getTime() - StartTime);
+		return elapsedTime + (getTime() - startTime);
 	else
-		return ElapsedTime;
+		return elapsedTime;
 }
-
 
 
 FpsCounter::FpsCounter()
 {
-	StartTime = 0.0;
+	startTime = 0.0;
+	deltaTime = 0.0;
+	lastTime = 0.0;
 
 	interval = 100;
 
 	fps = 0.0;
 
 	running = false;
-
-	DeltaTime = 0.0;
-	LastTime = 0.0;
 }
 
 FpsCounter::~FpsCounter()
 {
 }
 
-void FpsCounter::Start()
+void FpsCounter::start()
 {
 	running = true;
-	StartTime = getTime();
-	LastTime = StartTime;
+	startTime = getTime();
+	lastTime = startTime;
 }
 
-void FpsCounter::Stop()
+void FpsCounter::stop()
 {
 	running = false;
-	StartTime = 0;
+	startTime = 0;
 }
 
 void FpsCounter::frameTick()
@@ -86,22 +83,22 @@ void FpsCounter::frameTick()
 
 	ticks++;
 
-	double ActualTime = getTime();
+	double actualTime = getTime();
 
 	if (ticks == interval)
 	{
-		fps = ticks / ((getTime() - StartTime)/1000);
+		fps = ticks / ((getTime() - startTime)/1000);
 
 		interval = (int)fps;
 
 		clamp(interval, 1, 100);
 
-		StartTime = ActualTime;
+		startTime = actualTime;
 		ticks = 0;
 	}
 
-	DeltaTime = ActualTime - LastTime;
-	LastTime = getTime();
+	deltaTime = actualTime - lastTime;
+	lastTime = getTime();
 }
 
 double FpsCounter::getFPS()
@@ -111,38 +108,36 @@ double FpsCounter::getFPS()
 
 double FpsCounter::getDeltaTime()
 {
-	return 0.0;
+	return deltaTime;
 }
-
 
 
 FpsGovernor::FpsGovernor()
 {
-	StartTime = 0.0;
+	startTime = 0.0;
+	deltaTime = 0.0;
+	lastTime = 0.0;
 
 	running = false;
 
 	fps_limit = 0.0f;
 
 	frame_count = 0;
-
-	DeltaTime = 0.0;
-	LastTime = 0.0;
 }
 
 FpsGovernor::~FpsGovernor()
 {
 }
 
-void FpsGovernor::Start()
+void FpsGovernor::start()
 {
 	running = true;
 
-	StartTime = getTime();
-	LastTime = StartTime;
+	startTime = getTime();
+	lastTime = startTime;
 }
 
-void FpsGovernor::Stop()
+void FpsGovernor::stop()
 {
 	running = false;
 }
@@ -152,14 +147,14 @@ void FpsGovernor::frameTick()
 	if (running == false)
 		return;
 
-	double ActualTime = getTime();
+	double actualTime = getTime();
 
-	double DeltaTime = ActualTime - LastTime;
+	double deltaTime = actualTime - lastTime;
 
-	if (DeltaTime < 1000/fps_limit)
-	sleep((int)((1000 / fps_limit) - DeltaTime));
+	if (deltaTime < 1000/fps_limit)
+	sleep((int)((1000 / fps_limit) - deltaTime));
 
-	LastTime = getTime();
+	lastTime = getTime();
 }
 
 void FpsGovernor::setLimit(float limit)
@@ -169,5 +164,5 @@ void FpsGovernor::setLimit(float limit)
 
 double FpsGovernor::getDeltaTime()
 {
-	return 0.0;
+	return deltaTime;
 }

@@ -6,8 +6,8 @@ class Timer
 {
 private :
 
-	double StartTime;
-	double ElapsedTime;
+	double startTime;
+	double elapsedTime;
 
 	bool running;
 
@@ -16,9 +16,9 @@ public :
 	Timer();
    ~Timer();
 
-	void Start();
-	void Stop();
-	void Reset();
+	void start();
+	void stop();
+	void reset();
 
 	double getElapsedTime();
 };
@@ -27,26 +27,25 @@ class FpsCounter
 {
 private :
 
-	double StartTime;
+	double startTime;
+	double lastTime;
+	double deltaTime;
+
+	double fps;
 
 	int interval;
 
 	int ticks;
 
-	double fps;
-
 	bool running;
-
-	double LastTime;
-	double DeltaTime;
 
 public :
 
 	FpsCounter();
    ~FpsCounter();
 
-   void Start();
-   void Stop();
+   void start();
+   void stop();
 
    void frameTick();
 
@@ -59,24 +58,23 @@ class FpsGovernor
 {
 private:
 
-	double StartTime;
-
-	bool running;
+	double startTime;
+	double lastTime;
+	double deltaTime;
 
 	float fps_limit;
 
-	int frame_count;
+	bool running;
 
-	double LastTime;
-	double DeltaTime;
+	int frame_count;
 
 public:
 
 	FpsGovernor();
    ~FpsGovernor();
 
-	void Start();
-	void Stop();
+	void start();
+	void stop();
 
 	void frameTick();
 

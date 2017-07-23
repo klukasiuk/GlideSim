@@ -1,10 +1,7 @@
 #include "main_app.h"
+
 #include "core.h"
 
-string app_name = "GlideSim";
-
-int window_width  = 640;
-int window_height = 480;
 
 MainApplication::MainApplication()
 {
@@ -12,7 +9,7 @@ MainApplication::MainApplication()
 }
 
 
-void MainApplication::start()
+void MainApplication::start()							// Start method is also main loop
 {
 	init();
 
@@ -30,38 +27,53 @@ void MainApplication::start()
 	release();
 }
 
+void MainApplication::stop()
+{
+	run = false;
+}
+
 
 void MainApplication::init()
 {
-	logger::init();
+	string app_build = app_name + "_" + version;
+
+	logger::init(app_build);
+	logger::msg("Initialization start");
 
 	srand((unsigned int)time(NULL));
 
-	core::simpleWindow.initWindow(window_width, window_height, (char *)app_name.c_str());
+	// Core init
+
+	core::configLoader.load("config.txt");
+
+	core::simpleWindow.initWindow(window_width, window_height, (char *)app_build.c_str());
 
 	core::simpleWindow.initOGL();
 
-	fpsCounter.Start();
-
-	fpsGovernor.setLimit(30);
-	fpsGovernor.Start();
-
 	core::renderer.init();
 
-	//core::configLoader.load("config.txt");
+	// Timers init
+
+	fpsCounter.start();
+
+	fpsGovernor.setLimit(30);
+	fpsGovernor.start();
 
 	logger::logSystemInfo();
-
 	logger::msg("Initializing done");
 }
 
 void MainApplication::release()
 {
-	logger::msg("Exiting ...", logger::info);
+	logger::msg("Exiting ...");
+
 
 	core::simpleWindow.closeWindow();
 
 	core::renderer.release();
+
+
+	logger::release();
 
 	exit(EXIT_SUCCESS);
 }
@@ -78,13 +90,7 @@ void MainApplication::input()
 
 void MainApplication::update()
 {
-	fpsCounter.frameTick();
-	fpsGovernor.frameTick();
-
 	core::renderer.update();
-
-	//logger::msg("Fps = " + std::to_string(fpsCounter.getFPS()));
-	//printf("FPS = %lf\n", fpsCounter.getFPS());
 }
 
 void MainApplication::render()
@@ -96,5 +102,11 @@ void MainApplication::render()
 
 void MainApplication::timer()
 {
+	fpsCounter.frameTick();
+	fpsGovernor.frameTick();
+
+	//logger::msg("Fps = " + std::to_string(fpsCounter.getFPS()));
+	//printf("FPS = %lf\n", fpsCounter.getFPS());
+
 	//sleep(33);
 }

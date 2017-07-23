@@ -4,9 +4,10 @@
 #include <GLM/gtc/matrix_transform.hpp>
 #include <GLM/gtx/rotate_vector.hpp>
 
+
 class CameraInterface
 {
-public :
+protected :
 
 	glm::mat4 Projection;
 	glm::mat4 View;
@@ -15,15 +16,18 @@ public :
 	float near;
 	float far;
 
-	bool ProjectionChanged;
-	bool ViewChanged;
+	bool projectionChanged;
+	bool viewChanged;
+
+public :
 
 	virtual glm::mat4 getViewProj() = 0;
 };
 
+
 class Camera : public CameraInterface
 {
-public :
+private :
 
 	glm::vec3 position;
 	glm::vec3 direction;
@@ -34,8 +38,12 @@ public :
 
 	float fov;
 
+public :
+
 	Camera();
    ~Camera();
+
+   void move(float forward, float upward, float to_right);
 
    void translate(glm::vec3 translation);
    void translate(float x, float y, float z);
@@ -58,6 +66,7 @@ public :
 	glm::mat4 getViewProj();
 };
 
+
 class CameraOrtho : public CameraInterface
 {
 private:
@@ -65,6 +74,7 @@ private:
 	glm::vec3 position;
 	glm::vec3 direction;
 	glm::vec3 up;
+	glm::vec3 right;
 
 	float width;
 	float height;
@@ -73,6 +83,8 @@ public:
 
 	CameraOrtho();
 	~CameraOrtho();
+
+	void move(float forward, float upward, float to_right);
 
 	void translate(glm::vec3 translation);
 	void translate(float x, float y, float z);
@@ -93,6 +105,7 @@ public:
 
 	glm::mat4 getViewProj();
 };
+
 
 class Camera2D : public CameraInterface
 {

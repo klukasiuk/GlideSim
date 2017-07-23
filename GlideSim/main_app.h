@@ -5,7 +5,6 @@
 #include <string>
 
 #include "timer.h"
-#include "input_handler.h"
 
 using std::vector;
 using std::thread;
@@ -15,6 +14,12 @@ using std::string;
 class MainApplication
 {
 private :
+
+	const string app_name = "GlideSim";
+	const string version  = "dev05";
+
+	int window_width = 640;
+	int window_height = 480;
 
 	bool run;
 
@@ -36,4 +41,5 @@ public :
 	MainApplication();
 
 	void start();
+	void stop();
 };

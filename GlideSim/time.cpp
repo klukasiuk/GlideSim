@@ -3,14 +3,14 @@
 using namespace std::chrono;
 
 // This is nearly program boot time
-auto StartPoint = high_resolution_clock::now();
+auto startPoint = high_resolution_clock::now();
 
 // Time from program start in miliseconds
 double getTime()
 {
-	auto TimePoint = high_resolution_clock::now();
+	auto timePoint = high_resolution_clock::now();
 
-	duration<double> time_span = duration_cast<duration<double>>(TimePoint - StartPoint);
+	duration<double> time_span = duration_cast<duration<double>>(timePoint - startPoint);
 
 	return time_span.count() * 1000;
 }

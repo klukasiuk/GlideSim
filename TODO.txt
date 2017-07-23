@@ -1,6 +1,6 @@
 TODO LIST :
 
-- Need of global realease function
+- Need of global realease function !!!
 - Texture class
 - Asset manager
 - Multiple windows handling
@@ -14,17 +14,22 @@ TODO LIST :
 - Error handling in camera(parameters check)
 - Camera2D buffer problems to fix
 - Rewrite Math ( namespace , division on files)
-- Take timer functions from time file to another file
 - Timer Tests
 - Init file reader
-- Application class
 - Window class
 - Input handling
 - Messaging system
 - Camera lookAt mode
+- Add log messages to important functions
+- Better camera based on quaternions. No gimbal lock. Targeted for 3d movement without fixed up vector
+
 
 DONE :
 
 - Camera functions 
 - Color namespace
 - Timers
+- Take timer functions from time file to another file
+- Are log levels needed ? No
+- Application class
+- Does camera position and orientation vecs should be public ? No

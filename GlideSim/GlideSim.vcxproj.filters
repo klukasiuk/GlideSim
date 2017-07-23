@@ -55,6 +55,9 @@
     <Filter Include="Header Files\Simulation">
       <UniqueIdentifier>{12ec8c20-7430-4c9c-8ed9-74dc1aba2974}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\Simulation">
+      <UniqueIdentifier>{aeeae7f3-53ca-422c-8d61-f165e0364446}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main_app.cpp">
@@ -108,14 +111,23 @@
     <ClCompile Include="config_loader.cpp">
       <Filter>Source Files\Core</Filter>
     </ClCompile>
-    <ClCompile Include="bmp_loading.cpp">
-      <Filter>Source Files\Rendering</Filter>
-    </ClCompile>
     <ClCompile Include="input_handler.cpp">
       <Filter>Source Files\Core</Filter>
     </ClCompile>
     <ClCompile Include="core.cpp">
       <Filter>Source Files\Core</Filter>
+    </ClCompile>
+    <ClCompile Include="obj_loader.cpp">
+      <Filter>Source Files\Rendering</Filter>
+    </ClCompile>
+    <ClCompile Include="bmp_loader.cpp">
+      <Filter>Source Files\Rendering</Filter>
+    </ClCompile>
+    <ClCompile Include="actor.cpp">
+      <Filter>Source Files\Simulation</Filter>
+    </ClCompile>
+    <ClCompile Include="scene.cpp">
+      <Filter>Source Files\Simulation</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -386,14 +398,17 @@
     <ClInclude Include="window_manager.h">
       <Filter>Header Files\Core</Filter>
     </ClInclude>
-    <ClInclude Include="bmp_loading.h">
-      <Filter>Header Files\Rendering</Filter>
-    </ClInclude>
     <ClInclude Include="input_handler.h">
       <Filter>Header Files\Core</Filter>
     </ClInclude>
     <ClInclude Include="messaging.h">
       <Filter>Header Files\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="obj_loader.h">
+      <Filter>Header Files\Rendering</Filter>
+    </ClInclude>
+    <ClInclude Include="bmp_loader.h">
+      <Filter>Header Files\Rendering</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

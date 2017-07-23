@@ -5,13 +5,18 @@
 
 #include <GLFW/glfw3.h>
 
+#include "platform.h"
+
 using std::ofstream;
 using std::cout;
 
+
 ofstream logFile;
 
-
 bool logOpen = false;
+
+string logs_dir = "logs//";
+
 
 void logger::init()
 {
@@ -22,7 +27,9 @@ void logger::init()
 		return;
 	}
 
-	string logName = "log_" + getDateAndHour() + ".txt";
+	createDir((char*)logs_dir.c_str());
+
+	string logName = logs_dir + "log_" + getDateAndHour() + ".txt";
 
 	logFile.open(logName.c_str());
 
@@ -35,6 +42,36 @@ void logger::init()
 	logFile.precision(5);
 
 	logOpen = true;
+
+	logFile << "Log created on " << getDateAndHour() << "\n\n";
+}
+
+void logger::init(string init_msg)
+{
+	if (logOpen)
+	{
+		cout << "Logger Error -> Trying to initialize logger second time";
+		MsgBox("Trying to initialize logger second time", "Logger Error");
+		return;
+	}
+
+	createDir((char*)logs_dir.c_str());
+
+	string logName = logs_dir + "log_" + getDateAndHour() + ".txt";
+
+	logFile.open(logName.c_str());
+
+	if (logFile.is_open() == false)
+	{
+		cout << "Logger Error -> Cannot create log file";
+		MsgBox("Cannot create log file", "Logger Error");
+	}
+
+	logFile.precision(5);
+
+	logOpen = true;
+
+	logFile << init_msg << "\n";
 
 	logFile << "Log created on " << getDateAndHour() << "\n\n";
 }
@@ -71,45 +108,9 @@ void logger::msg(string msg)
 	logFile.flush();
 }
 
-void logger::msg(char * msg, msgLevel level)
+void logger::msg(char * msg, int errorCode)
 {
 	logFile << getTimeString() << " -> ";
-	
-	if (level == error)
-	logFile << "ERROR OCCURED : ";
-
-	if (level == critical)
-	logFile << "CRITICAL ERROR : ";
-	
-	logFile<< msg << "\n";
-
-	logFile.flush();
-}
-
-void logger::msg(string msg, msgLevel level)
-{
-	logFile << getTimeString() << " -> ";
-
-	if (level == error)
-		logFile << "ERROR OCCURED : ";
-
-	if (level == critical)
-		logFile << "CRITICAL ERROR : ";
-
-	logFile << msg << "\n";
-
-	logFile.flush();
-}
-
-void logger::msg(char * msg, int errorCode, msgLevel level)
-{
-	logFile << getTimeString() << " -> ";
-
-	if (level == error)
-		logFile << "ERROR OCCURED : ";
-
-	if (level == critical)
-		logFile << "CRITICAL ERROR : ";
 
 	logFile << msg;
 	
@@ -118,15 +119,9 @@ void logger::msg(char * msg, int errorCode, msgLevel level)
 	logFile.flush();
 }
 
-void logger::msg(string msg, int errorCode, msgLevel level)
+void logger::msg(string msg, int errorCode)
 {
 	logFile << getTimeString() << " -> ";
-
-	if (level == error)
-		logFile << "ERROR OCCURED : ";
-
-	if (level == critical)
-		logFile << "CRITICAL ERROR : ";
 
 	logFile << msg;
 

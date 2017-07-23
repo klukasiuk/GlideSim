@@ -70,3 +70,21 @@ void clamp(double & val, double min, double max)
 	if (val > max)
 		val = max;
 }
+
+// Fast inverse sqrt from Quake source code
+float fast_inv_sqrt(float var)
+{
+	long i;
+	float x2, y;
+	const float threehalfs = 1.5F;
+
+	x2 = var * 0.5F;
+	y = var;
+	i = *(long *)&y;							// evil floating point bit level hacking
+	i = 0x5f3759df - (i >> 1);					// what the fuck? 
+	y = *(float *)&i;
+	y = y * (threehalfs - (x2 * y * y));		// 1st iteration
+//	y  = y * ( threehalfs - ( x2 * y * y ) );   // 2nd iteration, this can be removed
+
+	return y;
+}

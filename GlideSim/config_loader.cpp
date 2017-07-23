@@ -7,7 +7,7 @@ bool blank_line(string line)
 	if (line.length() == 0)
 		return true;
 
-	for (int i = 0; i < line.length(); i++)
+	for (unsigned int i = 0; i < line.length(); i++)
 	{
 		if (line[i] <= 32)							// if char is not printable
 			continue;
@@ -20,7 +20,7 @@ bool blank_line(string line)
 
 bool comment_line(string line)
 {
-	for (int i = 0; i < line.length(); i++)
+	for (unsigned int i = 0; i < line.length(); i++)
 	{
 		if (line[i] <= 32)							// if char is not printable
 			continue;
@@ -30,13 +30,15 @@ bool comment_line(string line)
 		else
 			return false;
 	}
+
+	return false;
 }
 
 bool sector_line(string line)
 {
 	bool left_bracket = false;
 
-	for (int i = 0; i < line.length(); i++)
+	for (unsigned int i = 0; i < line.length(); i++)
 	{
 		if (line[i] <= 32)							// if char is not printable
 			continue;
@@ -51,7 +53,7 @@ bool sector_line(string line)
 	if (left_bracket == false)
 		return false;
 
-	for (int i = 0; i < line.length(); i++)
+	for (unsigned int i = 0; i < line.length(); i++)
 	{
 		if (line[i] <= 32)							// if char is not printable
 			continue;
@@ -66,7 +68,7 @@ bool sector_line(string line)
 
 bool key_value_line(string line)
 {
-	for (int i = 0; i < line.length(); i++)
+	for (unsigned int i = 0; i < line.length(); i++)
 	{
 		if (line[i] <= 32)							// if char is not printable
 			continue;
@@ -83,7 +85,7 @@ string get_section(string line)
 	int left_bracket  = 0;
 	int right_bracket = 0;
 
-	for (int i = 0; i < line.length(); i++)
+	for (unsigned int i = 0; i < line.length(); i++)
 	{
 		if (line[i] <= 32)							// if char is not printable
 			continue;
@@ -95,7 +97,7 @@ string get_section(string line)
 		}
 	}
 
-	for (int i = 0; i < line.length(); i++)
+	for (unsigned int i = 0; i < line.length(); i++)
 	{
 		if (line[i] <= 32)							// if char is not printable
 			continue;
@@ -121,7 +123,7 @@ void parse_line(string line, string * key, string * value)
 	int value_end   = 0;
 
 
-	for (int i = 0; i < line.length(); i++)
+	for (unsigned int i = 0; i < line.length(); i++)
 	{
 		if (line[i] == 61)							// if char is "="
 		{
@@ -148,7 +150,7 @@ void parse_line(string line, string * key, string * value)
 		}
 	}
 
-	for (int i = equals_char + 1; i < line.length(); i++)
+	for (unsigned int i = equals_char + 1; i < line.length(); i++)
 	{
 		if (line[i] <= 32)
 			continue;
@@ -157,7 +159,7 @@ void parse_line(string line, string * key, string * value)
 		break;
 	}
 
-	for (int i = value_start + 1; i <line.length(); i++)
+	for (unsigned int i = value_start + 1; i <line.length(); i++)
 	{
 		if (line[i] <= 32)
 		{
@@ -211,7 +213,7 @@ ConfigLoader::ConfigLoader()
 
 ConfigLoader::~ConfigLoader()
 {
-	for (int i = 0; i < params_vec.size(); i++)
+	for (unsigned int i = 0; i < params_vec.size(); i++)
 	{
 		delete params_vec[i].value;
 	}

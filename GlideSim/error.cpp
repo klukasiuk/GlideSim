@@ -24,7 +24,7 @@ void error::msg(char * msg, char * tittle)
 	printf("ERROR OCCURED -> %s : %s\n", tittle, msg);
 
 	if (logErrors)
-	logger::msg(string(tittle) + " -- " + string(msg), logger::error);
+	logger::msg("ERROR : " + string(tittle) + " -- " + string(msg));
 
 	if (showMsgBox)
 	MsgBox(msg, tittle);
@@ -41,7 +41,7 @@ void error::msg(char * msg, char * tittle, int errorCode)
 	printf("ERROR OCCURED -> %s : %s CODE %d\n", tittle, msg, errorCode);
 
 	if (logErrors)
-	logger::msg(string(tittle) + " -- " + string(msg), errorCode, logger::error);
+	logger::msg("ERROR : " + string(tittle) + " -- " + string(msg), errorCode);
 
 	if (showMsgBox)
 	MsgBox(msg, tittle);
@@ -55,7 +55,7 @@ void error::critical(string msg, string tittle)
 
 void error::critical(char * msg, char * tittle)
 {
-	logger::msg(string(tittle) + " -- " + string(msg), logger::critical);
+	logger::msg("CRITICAL ERROR : " + string(tittle) + " -- " + string(msg));
 
 	if (printToConsole)
 	printf("CRITICAL ERROR -> %s : %s\n", tittle, msg);
@@ -72,7 +72,7 @@ void error::critical(string msg, string tittle, int errorCode)
 
 void error::critical(char * msg, char * tittle, int errorCode)
 {
-	logger::msg(string(tittle) + " -- " + string(msg), errorCode, logger::critical);
+	logger::msg("CRITICAL ERROR : " + string(tittle) + " -- " + string(msg), errorCode);
 
 	if (printToConsole)
 	printf("CRITICAL ERROR -> %s : %s CODE %d\n", tittle, msg, errorCode);
@@ -89,7 +89,7 @@ void error::forceExit()
 
 	logger::msg("Releasing memory");
 
-	release();
+	// TODO : GLOBAL RELEASE FUNCTION
 
 	logger::msg("Exiting program");
 

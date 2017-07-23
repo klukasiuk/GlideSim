@@ -13,27 +13,28 @@ void InputHandler::process_input()
 
 	state = glfwGetKey(core::simpleWindow.window, GLFW_KEY_W);
 	if (state == GLFW_PRESS)
-		core::renderer.cam.translate(core::renderer.cam.direction * movement_rate);
+		core::renderer.cam.move(movement_rate, 0, 0);
 
 	state = glfwGetKey(core::simpleWindow.window, GLFW_KEY_S);
 	if (state == GLFW_PRESS)
-		core::renderer.cam.translate(-core::renderer.cam.direction * movement_rate);
+		core::renderer.cam.move(-movement_rate, 0, 0);
 
 	state = glfwGetKey(core::simpleWindow.window, GLFW_KEY_A);
 	if (state == GLFW_PRESS)
-		core::renderer.cam.translate(-core::renderer.cam.right * movement_rate);
+		core::renderer.cam.move(0, 0, -movement_rate);
 
 	state = glfwGetKey(core::simpleWindow.window, GLFW_KEY_D);
 	if (state == GLFW_PRESS)
-		core::renderer.cam.translate(core::renderer.cam.right * movement_rate);
+		core::renderer.cam.move(0, 0, movement_rate);
 
 	state = glfwGetKey(core::simpleWindow.window, GLFW_KEY_SPACE);
 	if (state == GLFW_PRESS)
-		core::renderer.cam.translate(core::renderer.cam.up * movement_rate);
+		core::renderer.cam.move(0, movement_rate, 0);
 
 	state = glfwGetKey(core::simpleWindow.window, GLFW_KEY_LEFT_CONTROL);
 	if (state == GLFW_PRESS)
-		core::renderer.cam.translate(-core::renderer.cam.up * movement_rate);
+		core::renderer.cam.move(0, -movement_rate, 0);
+
 
 	double xpos, ypos;
 	glfwGetCursorPos(core::simpleWindow.window, &xpos, &ypos);

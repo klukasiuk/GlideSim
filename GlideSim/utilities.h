@@ -1,3 +1,6 @@
 #pragma once
 
-int getUID();
+namespace utilities
+{
+	int getUID();
+}

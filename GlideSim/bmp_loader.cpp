@@ -1,12 +1,18 @@
-#include "bmp_loading.h"
+#include "bmp_loader.h"
+
+#include <stdio.h>
 
 #include <GLEW/glew.h>
 #include <GLFW/glfw3.h>
-#include <stdio.h>
 
-int loadBMP_custom(const char * imagepath)
+#include "logger.h"
+
+// Loads bmp file and returns OpenGL texture ID
+int loadBMP(const char * imagepath)
 {
 	printf("Reading image %s\n", imagepath);
+
+	logger::msg(string("Reading image : ") + imagepath);
 
 	// Data read from the header of the BMP file
 	unsigned char header[54];
@@ -14,7 +20,7 @@ int loadBMP_custom(const char * imagepath)
 	unsigned int imageSize;
 	unsigned int width, height;
 
-	// Actual RGB data
+	// RGB data
 	unsigned char * data;
 
 	// Open the file
@@ -31,11 +37,13 @@ int loadBMP_custom(const char * imagepath)
 		printf("Not a correct BMP file\n");
 		return 0;
 	}
+
 	// A BMP files always begins with "BM"
 	if (header[0] != 'B' || header[1] != 'M') {
 		printf("Not a correct BMP file\n");
 		return 0;
 	}
+
 	// Make sure this is a 24bpp file
 	if (*(int*)&(header[0x1E]) != 0) { printf("Not a correct BMP file\n");    return 0; }
 	if (*(int*)&(header[0x1C]) != 24) { printf("Not a correct BMP file\n");    return 0; }
@@ -54,7 +62,7 @@ int loadBMP_custom(const char * imagepath)
 	if (dataPos == 0)
 		dataPos = 54;					// The BMP header is done that way
 
-										// Create a buffer
+	// Create a buffer
 	data = new unsigned char[imageSize];
 
 	// Read the actual data from the file into the buffer

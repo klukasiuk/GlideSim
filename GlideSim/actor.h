@@ -8,5 +8,6 @@ private :
 
 public :
 
+	Actor();
 
 };

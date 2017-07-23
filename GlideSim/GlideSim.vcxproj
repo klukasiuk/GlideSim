@@ -90,11 +90,12 @@
     </ClCompile>
     <Link>
       <AdditionalDependencies>$(SolutionDir)Libs\lib\*.lib;opengl32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <IgnoreAllDefaultLibraries>false</IgnoreAllDefaultLibraries>
     </Link>
     <PostBuildEvent>
       <Command>xcopy /y /d "$(SolutionDir)Libs\dll\*.dll" "$(SolutionDir)Build\$(Configuration)\"
 xcopy /y /d "$(SolutionDir)Shaders\*.glsl" "$(SolutionDir)Build\$(Configuration)\Shaders\"
-xcopy /y /d "$(SolutionDir)Images\*.*" "$(SolutionDir)Build\$(Configuration)\"</Command>
+xcopy /y /d "$(SolutionDir)Assets\*.*" "$(SolutionDir)Build\$(Configuration)\Assets\"</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
@@ -117,11 +118,12 @@ xcopy /y /d "$(SolutionDir)Images\*.*" "$(SolutionDir)Build\$(Configuration)\"</
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
       <AdditionalDependencies>$(SolutionDir)Libs\lib\*.lib;opengl32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <IgnoreAllDefaultLibraries>false</IgnoreAllDefaultLibraries>
     </Link>
     <PostBuildEvent>
       <Command>xcopy /y /d "$(SolutionDir)Libs\dll\*.dll" "$(SolutionDir)Build\$(Configuration)\"
 xcopy /y /d "$(SolutionDir)Shaders\*.glsl" "$(SolutionDir)Build\$(Configuration)\Shaders\"
-xcopy /y /d "$(SolutionDir)Images\*.*" "$(SolutionDir)Build\$(Configuration)\"</Command>
+xcopy /y /d "$(SolutionDir)Assets\*.*" "$(SolutionDir)Build\$(Configuration)\Assets\"</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -138,7 +140,8 @@ xcopy /y /d "$(SolutionDir)Images\*.*" "$(SolutionDir)Build\$(Configuration)\"</
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="bmp_loading.cpp" />
+    <ClCompile Include="actor.cpp" />
+    <ClCompile Include="bmp_loader.cpp" />
     <ClCompile Include="camera.cpp" />
     <ClCompile Include="color.cpp" />
     <ClCompile Include="config_loader.cpp" />
@@ -149,8 +152,10 @@ xcopy /y /d "$(SolutionDir)Images\*.*" "$(SolutionDir)Build\$(Configuration)\"</
     <ClCompile Include="main_app.cpp" />
     <ClCompile Include="math.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="obj_loader.cpp" />
     <ClCompile Include="platform.cpp" />
     <ClCompile Include="renderer.cpp" />
+    <ClCompile Include="scene.cpp" />
     <ClCompile Include="shader.cpp" />
     <ClCompile Include="simple_window.cpp" />
     <ClCompile Include="texture.cpp" />
@@ -230,7 +235,7 @@ xcopy /y /d "$(SolutionDir)Images\*.*" "$(SolutionDir)Build\$(Configuration)\"</
     <ClInclude Include="..\Libs\include\SOIL\stb_image_aug.h" />
     <ClInclude Include="actor.h" />
     <ClInclude Include="asset_manager.h" />
-    <ClInclude Include="bmp_loading.h" />
+    <ClInclude Include="bmp_loader.h" />
     <ClInclude Include="camera.h" />
     <ClInclude Include="color.h" />
     <ClInclude Include="config_loader.h" />
@@ -241,6 +246,7 @@ xcopy /y /d "$(SolutionDir)Images\*.*" "$(SolutionDir)Build\$(Configuration)\"</
     <ClInclude Include="main_app.h" />
     <ClInclude Include="math.h" />
     <ClInclude Include="messaging.h" />
+    <ClInclude Include="obj_loader.h" />
     <ClInclude Include="platform.h" />
     <ClInclude Include="renderer.h" />
     <ClInclude Include="scene.h" />
