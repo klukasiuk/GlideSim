@@ -27,18 +27,27 @@ struct Param
 // Loads config from INI file
 class ConfigLoader
 {
-private :
+private:
+
+	const char * default_config_filename = "config.txt";
 
 	string config_file_name;
 
 	vector<Param> params_vec;
 
-public :
+public:
 
 	ConfigLoader();
-   ~ConfigLoader();
+	~ConfigLoader();
 
 	void load(string filename);
-
 	void reload();
+
+	void create_default_config();
+
+	int    get_int(string param_name);
+	float  get_float(string param_name);
+	string get_string(string param_name);
+
+	vector<Param> get_section(string section_name);
 };

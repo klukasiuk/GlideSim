@@ -2,6 +2,9 @@
 
 #include <fstream>
 
+#include "error.h"
+
+
 bool blank_line(string line)
 {
 	if (line.length() == 0)
@@ -80,7 +83,7 @@ bool key_value_line(string line)
 	return false;
 }
 
-string get_section(string line)
+string parse_section(string line)
 {
 	int left_bracket  = 0;
 	int right_bracket = 0;
@@ -174,6 +177,28 @@ void parse_line(string line, string * key, string * value)
 
 ParamType check_type(string value)
 {
+	bool non_digit_character = false;
+	bool dot_character       = false;
+
+	for (unsigned int i = 0; i < value.length(); i++)	// check for printable characters
+	{
+		if (value[i] < 48 || value[i] > 57)
+		{
+			non_digit_character = true;
+		}
+
+		if (value[i] == 46)
+		{
+			dot_character = true;
+		}
+	}
+
+	if (non_digit_character == true && dot_character == false)
+		return param_string;
+
+	if (non_digit_character == true && dot_character == true)
+		return param_float;
+
 	return param_int;
 }
 
@@ -223,12 +248,26 @@ ConfigLoader::~ConfigLoader()
 
 void ConfigLoader::load(string filename)
 {
+	config_file_name = filename;
+
 	std::ifstream config_file(filename.c_str());
 
 	if (config_file.is_open() == false)
-	return;
+	{
+		error::msg(string("Cannot open config file = ") + filename + "\n Creating default config", string("ConfigLoader error"));
+		
+		create_default_config();
 
-	config_file_name = filename;
+		config_file_name = default_config_filename;
+
+		config_file.open(default_config_filename);
+
+		if (config_file.is_open() == false)
+		{
+			error::msg("Still cannot open config file", "ConfigLoader error");
+			return;
+		}
+	}
 
 	string line;
 
@@ -244,7 +283,7 @@ void ConfigLoader::load(string filename)
 
 		if (sector_line(line))
 		{
-			section = get_section(line);
+			section = parse_section(line);
 			continue;
 		}
 
@@ -270,8 +309,95 @@ void ConfigLoader::load(string filename)
 
 		printf("Config Parser : unknown line content \n");
 	}
+
+	config_file.close();
 }
 
 void ConfigLoader::reload()
 {
+	params_vec.clear();
+	load(config_file_name);
+}
+
+void ConfigLoader::create_default_config()
+{
+	std::ofstream config_file(default_config_filename);
+
+	if (config_file.is_open() == false)
+	{
+		error::msg("Cannot create default config file", "ConfigLoader error");
+		return;
+	}
+
+	config_file << "# Default config file\n";
+	config_file << "window_width = 800\n";
+	config_file << "window_height = 600\n";
+
+	config_file.close();
+}
+
+int ConfigLoader::get_int(string param_name)
+{
+	for (unsigned int i = 0; i < params_vec.size(); i++)
+	{
+		if (params_vec[i].type != param_int)
+			continue;
+
+		if (params_vec[i].key == param_name)
+		{
+			return *((int*)params_vec[i].value);
+		}
+	}
+
+	error::msg(string("Cannot find requested parameter = ") + param_name, string("ConfigLoader error"));
+	return 0;
+}
+
+float ConfigLoader::get_float(string param_name)
+{
+	for (unsigned int i = 0; i < params_vec.size(); i++)
+	{
+		if (params_vec[i].type != param_float)
+			continue;
+
+		if (params_vec[i].key == param_name)
+		{
+			return *((float*)params_vec[i].value);
+		}
+	}
+
+	error::msg(string("Cannot find requested parameter = ") + param_name, string("ConfigLoader error"));
+	return 0.0f;
+}
+
+string ConfigLoader::get_string(string param_name)
+{
+	for (unsigned int i = 0; i < params_vec.size(); i++)
+	{
+		if (params_vec[i].type != param_string)
+			continue;
+
+		if (params_vec[i].key == param_name)
+		{
+			return *((string*)params_vec[i].value);
+		}
+	}
+
+	error::msg(string("Cannot find requested parameter = ") + param_name, string("ConfigLoader error"));
+	return 0;
+}
+
+vector<Param> ConfigLoader::get_section(string section_name)
+{
+	vector<Param> section_parameters;
+
+	for (unsigned int i = 0; i < params_vec.size(); i++)
+	{
+		if (params_vec[i].section != section_name)
+			continue;
+
+		section_parameters.push_back(params_vec[i]);
+	}
+
+	return section_parameters;
 }

@@ -14,11 +14,12 @@ int cubes = 200;
 
 void Renderer::init()
 {
+	vector<unsigned short> indices;
 	vector< glm::vec3 > vertices;
 	vector< glm::vec2 > uvs;
 	vector< glm::vec3 > normals;
 
-	bool res = loadOBJ_custom("Assets//cube.obj", vertices, uvs, normals);
+	bool res = loadAssimp("Assets//cube.obj", indices, vertices, uvs, normals);
 
 	glGenVertexArrays(1, &VertexArrayID);
 	glBindVertexArray(VertexArrayID);
@@ -29,7 +30,7 @@ void Renderer::init()
 
 	glGenBuffers(1, &uvbuffer);
 	glBindBuffer(GL_ARRAY_BUFFER, uvbuffer);
-	glBufferData(GL_ARRAY_BUFFER, uvs.size() * sizeof(glm::vec3), &uvs[0], GL_STATIC_DRAW);
+	glBufferData(GL_ARRAY_BUFFER, uvs.size() * sizeof(glm::vec2), &uvs[0], GL_STATIC_DRAW);
 
 
 	myShader = new Shader("Shaders//texture_vertex.glsl", "Shaders//texture_fragment.glsl");
@@ -125,6 +126,4 @@ void Renderer::update()
 		modelMatrix[i] = glm::rotate(modelMatrix[i], rate, glm::vec3(1, 0, 0));
 		modelMatrix[i] = glm::rotate(modelMatrix[i], rate, glm::vec3(0, 0, 1));
 	}
-
-	cam.zoom(1.0001f);
 }

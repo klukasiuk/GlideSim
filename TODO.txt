@@ -1,6 +1,6 @@
 TODO LIST :
 
-- Need of global realease function !!!
+- Need of global release function !!!
 - Texture class
 - Asset manager
 - Multiple windows handling
@@ -22,7 +22,7 @@ TODO LIST :
 - Camera lookAt mode
 - Add log messages to important functions
 - Better camera based on quaternions. No gimbal lock. Targeted for 3d movement without fixed up vector
-
+- ConfigReader should be more error proof
 
 DONE :
 

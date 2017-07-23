@@ -5,6 +5,11 @@
 
 #include "core.h"
 
+InputHandler::InputHandler()
+{
+	mouse_input = false;
+}
+
 void InputHandler::process_input()
 {
 	int state;

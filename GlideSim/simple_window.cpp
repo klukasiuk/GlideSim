@@ -9,6 +9,7 @@
 
 using std::string;
 
+
 // Basic Callbacks
 
 void error_callback(int code, const char * msg)
@@ -24,6 +25,29 @@ void key_callback(GLFWwindow* window, int key, int scancode, int action, int mod
 {
 	if (key == GLFW_KEY_ESCAPE && action == GLFW_PRESS)
 		glfwSetWindowShouldClose(window, GLFW_TRUE);
+}
+
+void mouse_button_callback(GLFWwindow* window, int button, int action, int mods)
+{
+	if (button == GLFW_MOUSE_BUTTON_RIGHT && action == GLFW_PRESS)
+		;
+}
+
+void cursor_position_callback(GLFWwindow* window, double xpos, double ypos)
+{
+	
+}
+
+void cursor_enter_callback(GLFWwindow* window, int entered)
+{
+	if (entered)
+	{
+		// The cursor entered the client area of the window
+	}
+	else
+	{
+		// The cursor left the client area of the window
+	}
 }
 
 
@@ -63,12 +87,16 @@ void SimpleWindow::initWindow(int width, int height, char * name)
 		exit(EXIT_FAILURE);
 	}
 
+	glfwSetMouseButtonCallback(window, mouse_button_callback);
 	glfwSetKeyCallback(window, key_callback);
+	glfwSetCursorPosCallback(window, cursor_position_callback);
+	glfwSetCursorEnterCallback(window, cursor_enter_callback);
 
 	glfwMakeContextCurrent(window);
 
 	glfwSetCursorPos(window, WindowWidth / 2, WindowHeight / 2);
 
+	glfwSetInputMode(window, GLFW_STICKY_MOUSE_BUTTONS, 1);
 	glfwSetInputMode(window, GLFW_STICKY_KEYS, GL_TRUE);
 	glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_DISABLED);
 }

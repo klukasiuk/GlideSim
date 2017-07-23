@@ -148,13 +148,15 @@ bool loadAssimp(char * path,
 	}
 
 	// Fill vertices normals
-	normals.reserve(mesh->mNumVertices);
-	for (unsigned int i = 0; i<mesh->mNumVertices; i++) 
+	if (mesh->mNormals != NULL)
 	{
-		aiVector3D n = mesh->mNormals[i];
-		normals.push_back(glm::vec3(n.x, n.y, n.z));
+		normals.reserve(mesh->mNumVertices);
+		for (unsigned int i = 0; i < mesh->mNumVertices; i++)
+		{
+			aiVector3D n = mesh->mNormals[i];
+			normals.push_back(glm::vec3(n.x, n.y, n.z));
+		}
 	}
-
 
 	// Fill face indices
 	indices.reserve(3 * mesh->mNumFaces);
