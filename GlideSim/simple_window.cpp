@@ -141,7 +141,7 @@ void SimpleWindow::initOGL()
 
 	glDepthFunc(GL_LESS);
 
-	glEnable(GL_CULL_FACE);
+	//glEnable(GL_CULL_FACE);
 
 	glClearColor(0, 0, 0.4f, 0);
 

@@ -152,6 +152,7 @@ xcopy /y /d "$(SolutionDir)Assets\*.*" "$(SolutionDir)Build\$(Configuration)\Ass
     <ClCompile Include="main_app.cpp" />
     <ClCompile Include="math.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="mesh.cpp" />
     <ClCompile Include="obj_loader.cpp" />
     <ClCompile Include="platform.cpp" />
     <ClCompile Include="renderer.cpp" />
@@ -242,9 +243,12 @@ xcopy /y /d "$(SolutionDir)Assets\*.*" "$(SolutionDir)Build\$(Configuration)\Ass
     <ClInclude Include="core.h" />
     <ClInclude Include="error.h" />
     <ClInclude Include="input_handler.h" />
+    <ClInclude Include="light.h" />
     <ClInclude Include="logger.h" />
     <ClInclude Include="main_app.h" />
+    <ClInclude Include="material.h" />
     <ClInclude Include="math.h" />
+    <ClInclude Include="mesh.h" />
     <ClInclude Include="messaging.h" />
     <ClInclude Include="obj_loader.h" />
     <ClInclude Include="platform.h" />

@@ -1,25 +1,29 @@
 #pragma once
 
+#include <vector>
+
 #include "camera.h"
 #include "shader.h"
+#include "material.h"
+#include "light.h"
+#include "mesh.h"
+
+
+using std::vector;
+
 
 class Renderer
 {
 private :
 
-	GLuint VertexArrayID;
-	GLuint vertexbuffer;
-	GLuint uvbuffer;
+	PointLight       pointLight;
+	DirectionalLight directionalLight;
 
-	GLuint MatrixID;
-	glm::mat4 mvp;
+	vector<Material> materials_vec;
 
-	GLuint TextureID;
-	GLuint Texture;
+	Mesh cube_mesh;
 
-	glm::mat4 Projection;
-	glm::mat4 View;
-	glm::mat4 Model;
+	int Texture;
 
 	Shader * myShader;
 

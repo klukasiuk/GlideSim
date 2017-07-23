@@ -2,21 +2,42 @@
 
 #include <GLEW/glew.h>
 #include <GLFW/glfw3.h>
+#include <GLM/glm.hpp>
 
 #include "error.h"
 
 class Shader
 {
-private :
+private:
 
 	GLuint programID;																	// ID for shading program
 
-public :
+	string vertex_shader_path;															// Paths to shader files
+	string fragment_shader_path;
 
-	Shader(const char * vertex_file_path, const char * fragment_file_path);				// Load shaders, compiles them , compiles program and set program ID
-   ~Shader();
+public:
+
+	Shader(char * vertex_file_path, char * fragment_file_path);							// Load shaders, compiles them , compiles program and set program ID
+	~Shader();
 
 	void use();																			// Bind shader for use
 
+	void reload();
+
 	GLuint getID();
+
+	void Shader::setBool(string &name, bool value);
+	void Shader::setInt(string &name, int value);
+	void Shader::setFloat(string &name, float value);
+
+	void Shader::setVec2(string &name, glm::vec2 &value);
+	void Shader::setVec2(string &name, float x, float y);
+	void Shader::setVec3(string &name, glm::vec3 &value);
+	void Shader::setVec3(string &name, float x, float y, float z);
+	void Shader::setVec4(string &name, glm::vec4 &value);
+	void Shader::setVec4(string &name, float x, float y, float z, float w);
+
+	void Shader::setMat2(string &name, glm::mat2 &mat);
+	void Shader::setMat3(string &name, glm::mat3 &mat);
+	void Shader::setMat4(string &name, glm::mat4 &mat);
 };
