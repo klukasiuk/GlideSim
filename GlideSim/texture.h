@@ -1,5 +1,6 @@
 #pragma once
 
+#include <GLEW/glew.h>
 #include <GLFW/glfw3.h>
 
 class Texture
@@ -14,6 +15,4 @@ public :
    ~Texture();
 
    void bind();
-
-   void keyColor(int r, int g, int b);
 };

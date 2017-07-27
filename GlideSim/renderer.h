@@ -6,7 +6,7 @@
 #include "shader.h"
 #include "material.h"
 #include "light.h"
-#include "mesh.h"
+#include "model.h"
 
 
 using std::vector;
@@ -21,7 +21,7 @@ private :
 
 	vector<Material> materials_vec;
 
-	Mesh cube_mesh;
+	Model * plane;
 
 	int Texture;
 

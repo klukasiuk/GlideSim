@@ -9,13 +9,6 @@
       <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
       <Extensions>h;hh;hpp;hxx;hm;inl;inc;xsd</Extensions>
     </Filter>
-    <Filter Include="Assets">
-      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
-      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
-    </Filter>
-    <Filter Include="Assets\Shaders">
-      <UniqueIdentifier>{2fc0057a-2491-4da1-abca-b2b870aa9723}</UniqueIdentifier>
-    </Filter>
     <Filter Include="External Libs">
       <UniqueIdentifier>{cac42177-e3bf-4c72-8151-9a8f6fa5e5fa}</UniqueIdentifier>
     </Filter>
@@ -58,6 +51,15 @@
     <Filter Include="Source Files\Simulation">
       <UniqueIdentifier>{aeeae7f3-53ca-422c-8d61-f165e0364446}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\Assets">
+      <UniqueIdentifier>{1c6d513e-5f52-48d0-900c-c92e45b7b082}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Assets">
+      <UniqueIdentifier>{b9dc9c86-6dda-4991-833d-e489d08c11fd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GLSL">
+      <UniqueIdentifier>{3fb410e2-b29b-4dbc-b291-7d81d91d4baf}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main_app.cpp">
@@ -99,9 +101,6 @@
     <ClCompile Include="shader.cpp">
       <Filter>Source Files\Rendering</Filter>
     </ClCompile>
-    <ClCompile Include="texture.cpp">
-      <Filter>Source Files\Rendering</Filter>
-    </ClCompile>
     <ClCompile Include="window.cpp">
       <Filter>Source Files\Core</Filter>
     </ClCompile>
@@ -117,20 +116,26 @@
     <ClCompile Include="core.cpp">
       <Filter>Source Files\Core</Filter>
     </ClCompile>
-    <ClCompile Include="obj_loader.cpp">
-      <Filter>Source Files\Rendering</Filter>
-    </ClCompile>
-    <ClCompile Include="bmp_loader.cpp">
-      <Filter>Source Files\Rendering</Filter>
-    </ClCompile>
     <ClCompile Include="actor.cpp">
       <Filter>Source Files\Simulation</Filter>
     </ClCompile>
     <ClCompile Include="scene.cpp">
       <Filter>Source Files\Simulation</Filter>
     </ClCompile>
+    <ClCompile Include="bmp_loader.cpp">
+      <Filter>Source Files\Assets</Filter>
+    </ClCompile>
     <ClCompile Include="mesh.cpp">
-      <Filter>Source Files\Rendering</Filter>
+      <Filter>Source Files\Assets</Filter>
+    </ClCompile>
+    <ClCompile Include="texture.cpp">
+      <Filter>Source Files\Assets</Filter>
+    </ClCompile>
+    <ClCompile Include="model.cpp">
+      <Filter>Source Files\Assets</Filter>
+    </ClCompile>
+    <ClCompile Include="mesh_loader.cpp">
+      <Filter>Source Files\Assets</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -362,9 +367,6 @@
     <ClInclude Include="shader.h">
       <Filter>Header Files\Rendering</Filter>
     </ClInclude>
-    <ClInclude Include="texture.h">
-      <Filter>Header Files\Rendering</Filter>
-    </ClInclude>
     <ClInclude Include="utilities.h">
       <Filter>Header Files\Utility</Filter>
     </ClInclude>
@@ -407,37 +409,43 @@
     <ClInclude Include="messaging.h">
       <Filter>Header Files\Core</Filter>
     </ClInclude>
-    <ClInclude Include="obj_loader.h">
-      <Filter>Header Files\Rendering</Filter>
-    </ClInclude>
-    <ClInclude Include="bmp_loader.h">
-      <Filter>Header Files\Rendering</Filter>
-    </ClInclude>
-    <ClInclude Include="mesh.h">
-      <Filter>Header Files\Rendering</Filter>
-    </ClInclude>
     <ClInclude Include="material.h">
       <Filter>Header Files\Rendering</Filter>
     </ClInclude>
     <ClInclude Include="light.h">
       <Filter>Header Files\Rendering</Filter>
     </ClInclude>
+    <ClInclude Include="mesh.h">
+      <Filter>Header Files\Assets</Filter>
+    </ClInclude>
+    <ClInclude Include="texture.h">
+      <Filter>Header Files\Assets</Filter>
+    </ClInclude>
+    <ClInclude Include="bmp_loader.h">
+      <Filter>Header Files\Assets</Filter>
+    </ClInclude>
+    <ClInclude Include="model.h">
+      <Filter>Header Files\Assets</Filter>
+    </ClInclude>
+    <ClInclude Include="mesh_loader.h">
+      <Filter>Header Files\Assets</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <None Include="..\Shaders\color_fragment.glsl">
-      <Filter>Assets\Shaders</Filter>
-    </None>
-    <None Include="..\Shaders\color_vertex.glsl">
-      <Filter>Assets\Shaders</Filter>
-    </None>
-    <None Include="..\Shaders\texture_fragment.glsl">
-      <Filter>Assets\Shaders</Filter>
-    </None>
-    <None Include="..\Shaders\texture_vertex.glsl">
-      <Filter>Assets\Shaders</Filter>
-    </None>
     <None Include="..\Libs\include\ASSIMP\material.inl">
       <Filter>External Libs\Assimp</Filter>
+    </None>
+    <None Include="..\Shaders\color_fragment.glsl">
+      <Filter>GLSL</Filter>
+    </None>
+    <None Include="..\Shaders\color_vertex.glsl">
+      <Filter>GLSL</Filter>
+    </None>
+    <None Include="..\Shaders\texture_fragment.glsl">
+      <Filter>GLSL</Filter>
+    </None>
+    <None Include="..\Shaders\texture_vertex.glsl">
+      <Filter>GLSL</Filter>
     </None>
   </ItemGroup>
   <ItemGroup>

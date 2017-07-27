@@ -6,13 +6,15 @@
 #include <GLEW/glew.h>
 #include <GLFW/glfw3.h>
 
+#include "shader.h"
+
 
 using std::vector;
 
 
 class Mesh
 {
-public:
+private :
 
 	vector<unsigned short> indices;
 	vector<glm::vec3> vertices;
@@ -27,7 +29,10 @@ public:
 	GLuint normalBufferID;
 	GLuint colorBufferID;
 
-	void load(char * filename);
+public :
 
-	void draw();
+	Mesh(vector<unsigned short> indices, vector<glm::vec3> vertices, vector<glm::vec2> uvs, vector<glm::vec3> normals, vector<glm::vec3> colors);
+   ~Mesh();
+
+	void draw(Shader * shader);
 };

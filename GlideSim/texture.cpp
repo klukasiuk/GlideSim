@@ -15,12 +15,10 @@ Texture::Texture(char * texName)
 
 Texture::~Texture()
 {
+	glDeleteTextures(1, &ID);
 }
 
 void Texture::bind()
 {
-}
-
-void Texture::keyColor(int r, int g, int b)
-{
+	glBindTexture(GL_TEXTURE_2D, ID);
 }

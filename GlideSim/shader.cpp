@@ -69,11 +69,9 @@ Shader::Shader(char * vertex_file_path, char * fragment_file_path)
 
 		string error_info;
 
-		for (int i = 0; i < VertexShaderErrorMessage.size(); i++)
+		for (unsigned int i = 0; i < VertexShaderErrorMessage.size(); i++)
 			error_info += VertexShaderErrorMessage[i];
 
-
-		//error::critical("Impossible to compile shader : " + string(vertex_file_path), "Shader Compiling Error");
 		error::critical(error_info, "Shader Compiling Error");
 
 		return;
@@ -97,10 +95,9 @@ Shader::Shader(char * vertex_file_path, char * fragment_file_path)
 
 		string error_info;
 
-		for (int i = 0; i < FragmentShaderErrorMessage.size(); i++)
+		for (unsigned int i = 0; i < FragmentShaderErrorMessage.size(); i++)
 			error_info += FragmentShaderErrorMessage[i];
 
-	//	error::critical("Impossible to compile shader : " + string(fragment_file_path), "Shader Compiling Error");
 		error::critical(error_info, "Shader Compiling Error");
 
 		return;;

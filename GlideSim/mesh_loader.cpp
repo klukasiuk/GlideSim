@@ -1,14 +1,11 @@
-#include "obj_loader.h"
+#include "mesh_loader.h"
 
 #include <assimp/Importer.hpp>				// C++ importer interface
 #include <assimp/scene.h>					// Output data structure
 #include <assimp/postprocess.h>				// Post processing flags
 
 
-bool loadOBJ_custom(char * path, 
-	std::vector<glm::vec3>& out_vertices, 
-	std::vector<glm::vec2>& out_uvs, 
-	std::vector<glm::vec3>& out_normals)
+bool loadObjCustom(char * path, vector<glm::vec3>& out_vertices, vector<glm::vec2>& out_uvs, vector<glm::vec3>& out_normals)
 {
 	printf("Loading OBJ file %s\n", path);
 
@@ -112,15 +109,11 @@ bool loadOBJ_custom(char * path,
 	return true;
 }
 
-bool loadAssimp(char * path,  
-	std::vector<unsigned short>& indices,
-	std::vector<glm::vec3>& vertices,
-	std::vector<glm::vec2>& uvs,
-	std::vector<glm::vec3>& normals)
+bool loadMeshAssimp(char * path, vector<unsigned short>& indices, vector<glm::vec3>& vertices, vector<glm::vec2>& uvs, vector<glm::vec3>& normals)
 {
 	Assimp::Importer importer;
 
-	const aiScene* scene = importer.ReadFile(path, 0);
+	const aiScene* scene = importer.ReadFile(path, aiProcess_GenNormals);
 
 	if (!scene) 
 	{

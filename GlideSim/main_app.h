@@ -18,8 +18,8 @@ private :
 	const string app_name = "GlideSim";
 	const string version  = "dev05";
 
-	int window_width = 640;
-	int window_height = 480;
+	int window_width = 1200;
+	int window_height = 800;
 
 	bool run;
 

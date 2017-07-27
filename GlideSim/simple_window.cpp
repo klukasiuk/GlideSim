@@ -25,6 +25,12 @@ void key_callback(GLFWwindow* window, int key, int scancode, int action, int mod
 {
 	if (key == GLFW_KEY_ESCAPE && action == GLFW_PRESS)
 		glfwSetWindowShouldClose(window, GLFW_TRUE);
+
+	if (key == GLFW_KEY_L && action == GLFW_PRESS)
+		glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
+
+	if (key == GLFW_KEY_P && action == GLFW_PRESS)
+		glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
 }
 
 void mouse_button_callback(GLFWwindow* window, int button, int action, int mods)
@@ -141,9 +147,7 @@ void SimpleWindow::initOGL()
 
 	glDepthFunc(GL_LESS);
 
-	//glEnable(GL_CULL_FACE);
+	glEnable(GL_CULL_FACE);
 
 	glClearColor(0, 0, 0.4f, 0);
-
-	//glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
 }
