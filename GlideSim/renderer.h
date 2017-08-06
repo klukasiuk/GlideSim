@@ -7,6 +7,7 @@
 #include "material.h"
 #include "light.h"
 #include "model.h"
+#include "height_map.h"
 
 
 using std::vector;
@@ -22,6 +23,8 @@ private :
 	vector<Material> materials_vec;
 
 	Model * plane;
+
+	HeightMap * map;
 
 	int Texture;
 

@@ -38,7 +38,7 @@ Mesh::Mesh(vector<unsigned short> Indices, vector<glm::vec3> Vertices, vector<gl
 	if (colors.size() > 0)
 	{
 		glBindBuffer(GL_ARRAY_BUFFER, colorBufferID);
-		glBufferData(GL_ARRAY_BUFFER, colors.size() * sizeof(glm::vec2), &colors[0], GL_STATIC_DRAW);
+		glBufferData(GL_ARRAY_BUFFER, colors.size() * sizeof(glm::vec3), &colors[0], GL_STATIC_DRAW);
 	}
 
 	glEnableVertexAttribArray(0);

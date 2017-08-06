@@ -15,7 +15,6 @@ TODO LIST :
 - Camera2D buffer problems to fix
 - Rewrite Math ( namespace , division on files)
 - Timer Tests
-- Init file reader
 - Window class
 - Input handling
 - Messaging system
@@ -33,3 +32,4 @@ DONE :
 - Are log levels needed ? No
 - Application class
 - Does camera position and orientation vecs should be public ? No
+- Config file reader

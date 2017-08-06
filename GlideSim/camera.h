@@ -63,6 +63,8 @@ public :
 
    void zoom(float z);										// Its more like changing FOV than zooming
 	
+   glm::vec3 getPos();
+
 	glm::mat4 getViewProj();
 };
 

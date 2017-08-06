@@ -12,7 +12,7 @@ Camera::Camera()
 	ratio = 4.0f / 3.0f;
 
 	near = 0.1f;
-	far = 100.0f;
+	far = 3000.0f;
 
 	projectionChanged = false;
 	viewChanged       = false;
@@ -130,6 +130,11 @@ void Camera::zoom(float z)
 	fov *= z;
 
 	projectionChanged = true;
+}
+
+glm::vec3 Camera::getPos()
+{
+	return position;
 }
 
 glm::mat4 Camera::getViewProj()

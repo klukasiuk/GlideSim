@@ -4,6 +4,7 @@
 
 #include "bmp_loader.h"
 #include "mesh_loader.h"
+#include "height_map.h"
 
 
 using std::vector;
@@ -11,6 +12,8 @@ using std::vector;
 void Renderer::init()
 {
 	plane = new Model("Assets//raptor.obj");
+
+	map = new HeightMap;
 
 	myShader = new Shader("Shaders//texture_vertex.glsl", "Shaders//texture_fragment.glsl");
 	//myShader = new Shader("Shaders//color_vertex.glsl", "Shaders//color_fragment.glsl");
@@ -24,6 +27,7 @@ void Renderer::release()
 {
 	delete myShader;
 	delete plane;
+	delete map;
 }
 
 void Renderer::draw()
@@ -49,10 +53,12 @@ void Renderer::draw()
 	glUniform1i(TextureID, 0);
 
 	plane->draw(myShader);
+
+	map->render(myShader);
 }
 
 void Renderer::update()
 {
-
+	map->update();
 
 }
