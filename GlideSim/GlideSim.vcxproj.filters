@@ -137,8 +137,11 @@
     <ClCompile Include="mesh_loader.cpp">
       <Filter>Source Files\Assets</Filter>
     </ClCompile>
+    <ClCompile Include="primitives.cpp">
+      <Filter>Source Files\Rendering</Filter>
+    </ClCompile>
     <ClCompile Include="height_map.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\Simulation</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -436,6 +439,9 @@
     <ClInclude Include="height_map.h">
       <Filter>Header Files\Simulation</Filter>
     </ClInclude>
+    <ClInclude Include="primitives.h">
+      <Filter>Header Files\Rendering</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="..\Libs\include\ASSIMP\material.inl">
@@ -451,6 +457,24 @@
       <Filter>GLSL</Filter>
     </None>
     <None Include="..\Shaders\texture_vertex.glsl">
+      <Filter>GLSL</Filter>
+    </None>
+    <None Include="..\Shaders\light_cube_fragment.glsl">
+      <Filter>GLSL</Filter>
+    </None>
+    <None Include="..\Shaders\light_cube_vertex.glsl">
+      <Filter>GLSL</Filter>
+    </None>
+    <None Include="..\Shaders\terrain_fragment.glsl">
+      <Filter>GLSL</Filter>
+    </None>
+    <None Include="..\Shaders\terrain_vertex.glsl">
+      <Filter>GLSL</Filter>
+    </None>
+    <None Include="..\Shaders\basic_lighting_fragment.glsl">
+      <Filter>GLSL</Filter>
+    </None>
+    <None Include="..\Shaders\basic_lighting_vertex.glsl">
       <Filter>GLSL</Filter>
     </None>
   </ItemGroup>

@@ -18,9 +18,11 @@ using glm::vec3;
 struct Chunk
 {
 	GLuint vao;
-	GLuint vbo;
-	GLuint cbo;
 	GLuint ebo;
+
+	GLuint vertex_buffer;
+	GLuint normal_buffer;
+	GLuint color_buffer;
 
 	int indices;
 

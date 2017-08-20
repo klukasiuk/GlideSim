@@ -72,7 +72,7 @@ Shader::Shader(char * vertex_file_path, char * fragment_file_path)
 		for (unsigned int i = 0; i < VertexShaderErrorMessage.size(); i++)
 			error_info += VertexShaderErrorMessage[i];
 
-		error::critical(error_info, "Shader Compiling Error");
+		error::critical(error_info, "Vertex Shader Compiling Error");
 
 		return;
 	}
@@ -98,7 +98,7 @@ Shader::Shader(char * vertex_file_path, char * fragment_file_path)
 		for (unsigned int i = 0; i < FragmentShaderErrorMessage.size(); i++)
 			error_info += FragmentShaderErrorMessage[i];
 
-		error::critical(error_info, "Shader Compiling Error");
+		error::critical(error_info, "Fragment Shader Compiling Error");
 
 		return;;
 	}
@@ -270,6 +270,20 @@ GLuint Shader::getID()
 	return programID;
 }
 
+GLuint Shader::getUniform(char * name)
+{
+	GLuint uniform_location = glGetUniformLocation(programID, name);
+
+	return uniform_location;
+}
+
+GLuint Shader::getUniform(string & name)
+{
+	GLuint uniform_location = glGetUniformLocation(programID, name.c_str());
+
+	return uniform_location;
+}
+
 void Shader::setBool(string &name, bool value)
 {
 	glUniform1i(glGetUniformLocation(programID, name.c_str()), (int)value);
@@ -295,9 +309,19 @@ void Shader::setVec2(string &name, float x, float y)
 	glUniform2f(glGetUniformLocation(programID, name.c_str()), x, y);
 }
 
+void Shader::setVec3(char * name, glm::vec3 & value)
+{
+	glUniform3fv(glGetUniformLocation(programID, name), 1, &value[0]);
+}
+
 void Shader::setVec3(string &name, glm::vec3 &value)
 {
 	glUniform3fv(glGetUniformLocation(programID, name.c_str()), 1, &value[0]);
+}
+
+void Shader::setVec3(char * name, float x, float y, float z)
+{
+	glUniform3f(glGetUniformLocation(programID, name), x, y, z);
 }
 
 void Shader::setVec3(string &name, float x, float y, float z)
@@ -323,6 +347,11 @@ void Shader::setMat2(string &name, glm::mat2 &mat)
 void Shader::setMat3(string &name, glm::mat3 &mat)
 {
 	glUniformMatrix3fv(glGetUniformLocation(programID, name.c_str()), 1, GL_FALSE, &mat[0][0]);
+}
+
+void Shader::setMat4(char * name, glm::mat4 & mat)
+{
+	glUniformMatrix4fv(glGetUniformLocation(programID, name), 1, GL_FALSE, &mat[0][0]);
 }
 
 void Shader::setMat4(string &name, glm::mat4 &mat)

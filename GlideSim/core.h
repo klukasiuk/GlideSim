@@ -2,11 +2,11 @@
 
 #include "simple_window.h"
 #include "logger.h"
-
+#include "input_handler.h"
 #include "config_loader.h"
 #include "asset_manager.h"
 #include "renderer.h"
-#include "input_handler.h"
+#include "camera.h"
 
 
 namespace core
@@ -18,6 +18,8 @@ namespace core
 	extern ConfigLoader configLoader;
 
 	extern AssetManager assetManager;
+
+	extern Camera camera;
 
 	extern Renderer renderer;
 }

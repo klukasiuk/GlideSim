@@ -21,6 +21,10 @@ protected :
 
 public :
 
+	virtual glm::mat4 getView() = 0;
+
+	virtual glm::mat4 getProj() = 0;
+
 	virtual glm::mat4 getViewProj() = 0;
 };
 
@@ -65,7 +69,9 @@ public :
 	
    glm::vec3 getPos();
 
-	glm::mat4 getViewProj();
+   glm::mat4 getView();
+   glm::mat4 getProj();
+   glm::mat4 getViewProj();
 };
 
 

@@ -10,5 +10,7 @@ namespace core
 
 	AssetManager assetManager;
 
+	Camera camera;
+
 	Renderer renderer;
 }

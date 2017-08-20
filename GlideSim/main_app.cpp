@@ -40,7 +40,8 @@ void MainApplication::init()
 	logger::init(app_build);
 	logger::msg("Initialization start");
 
-	srand((unsigned int)time(NULL));
+	srand((unsigned int)271304271304);
+	//srand((unsigned int)time(NULL));
 
 	// Core init
 

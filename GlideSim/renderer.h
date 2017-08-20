@@ -28,11 +28,13 @@ private :
 
 	int Texture;
 
-	Shader * myShader;
+	Shader * object_shader;
+	Shader * light_cube_shader;
+	Shader * terrain_shader;
+
+	Material plane_mat;
 
 public :
-
-	Camera cam;
 
 	void init();
 

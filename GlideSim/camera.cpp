@@ -8,7 +8,7 @@ Camera::Camera()
 	up        = glm::vec3(0, 1, 0);
 	right     = glm::vec3(-1, 0, 0);
 
-	fov = 90;
+	fov = 60;
 	ratio = 4.0f / 3.0f;
 
 	near = 0.1f;
@@ -135,6 +135,20 @@ void Camera::zoom(float z)
 glm::vec3 Camera::getPos()
 {
 	return position;
+}
+
+glm::mat4 Camera::getView()
+{
+	glm::mat4 vp = getViewProj();
+
+	return View;
+}
+
+glm::mat4 Camera::getProj()
+{
+	glm::mat4 vp = getViewProj();
+
+	return Projection;
 }
 
 glm::mat4 Camera::getViewProj()
