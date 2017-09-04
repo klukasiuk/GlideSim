@@ -277,6 +277,8 @@ xcopy /y /d "$(SolutionDir)Assets\*.*" "$(SolutionDir)Build\$(Configuration)\Ass
     <None Include="..\Shaders\color_vertex.glsl" />
     <None Include="..\Shaders\light_cube_fragment.glsl" />
     <None Include="..\Shaders\light_cube_vertex.glsl" />
+    <None Include="..\Shaders\std_shading_fragment.glsl" />
+    <None Include="..\Shaders\std_shading_vertex.glsl" />
     <None Include="..\Shaders\terrain_fragment.glsl" />
     <None Include="..\Shaders\terrain_vertex.glsl" />
     <None Include="..\Shaders\texture_fragment.glsl" />

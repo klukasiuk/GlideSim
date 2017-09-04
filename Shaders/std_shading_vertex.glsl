@@ -2,13 +2,11 @@
 
 layout(location = 0) in vec3 vertexPosition;
 layout(location = 2) in vec3 vertexNormal;
-layout(location = 3) in vec3 vertexColor;
 
 out vec3 Position_worldspace;
 out vec3 Normal_cameraspace;
 out vec3 EyeDirection_cameraspace;
 out vec3 LightDirection_cameraspace;
-out vec3 fragmentColor;
 
 uniform mat4 MVP;
 uniform mat4 V;
@@ -18,8 +16,6 @@ uniform vec3 lightPos;
 void main()
 {
 	gl_Position =  MVP * vec4(vertexPosition,1);
-
-	fragmentColor = vertexColor;
 	
 	Position_worldspace = (M * vec4(vertexPosition,1)).xyz;
 	

@@ -477,6 +477,12 @@
     <None Include="..\Shaders\basic_lighting_vertex.glsl">
       <Filter>GLSL</Filter>
     </None>
+    <None Include="..\Shaders\std_shading_vertex.glsl">
+      <Filter>GLSL</Filter>
+    </None>
+    <None Include="..\Shaders\std_shading_fragment.glsl">
+      <Filter>GLSL</Filter>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <Text Include="..\TODO.txt" />

@@ -16,8 +16,7 @@ void Renderer::init()
 
 	map = new HeightMap;
 
-	//object_shader = new Shader("Shaders//texture_vertex.glsl", "Shaders//texture_fragment.glsl");
-	object_shader = new Shader("Shaders//basic_lighting_vertex.glsl", "Shaders//basic_lighting_fragment.glsl");
+	object_shader = new Shader("Shaders//std_shading_vertex.glsl", "Shaders//std_shading_fragment.glsl");
 
 	light_cube_shader = new Shader("Shaders//light_cube_vertex.glsl", "Shaders//light_cube_fragment.glsl");
 
@@ -27,7 +26,7 @@ void Renderer::init()
 
 	Texture = loadBMP("Assets//suz.bmp");
 
-	pointLight.position = glm::vec3(0, 30, 30);
+	pointLight.position = glm::vec3(0, 50, 0);
 	pointLight.ambient = glm::vec3(1.0, 1.0, 1.0);
 
 	plane_mat.ambient = glm::vec3(0.5, 0.5, 0.5);
@@ -55,10 +54,12 @@ void Renderer::draw()
 	glm::mat4 model_mat = glm::mat4(1.0f);
 	model_mat = glm::rotate(model_mat, glm::radians(-90.0f), glm::vec3(1.0f, 0.0f, 0.0f));
 	model_mat = glm::translate(model_mat, glm::vec3(0.0f, 0.0f, 20.0f));
+
+	glm::mat4 MVP = core::camera.getProj() * core::camera.getView() * model_mat;
 	
-	object_shader->setMat4("ModelMat", model_mat);
-	object_shader->setMat4("ProjMat",  core::camera.getProj());
-	object_shader->setMat4("ViewMat", core::camera.getView());
+	object_shader->setMat4("M", model_mat);
+	object_shader->setMat4("V", core::camera.getView());
+	object_shader->setMat4("MVP", MVP);
 
 	plane->draw(object_shader);
 

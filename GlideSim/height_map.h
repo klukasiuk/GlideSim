@@ -27,6 +27,11 @@ struct Chunk
 	int indices;
 
 	vec3 position;
+
+	vector<float> border_top;
+	vector<float> border_down;
+	vector<float> border_left;
+	vector<float> border_right;
 };
 
 
@@ -42,9 +47,15 @@ private :
 
 	vector<Chunk> chunks;
 
+
+	vector<int> find_neighbours(vec3 chunk_pos);
+
 	void create_chunk(vec3 pos);
 
+	bool check_if_chunk_exist(vec3 pos);
+
 public :
+
 
 	HeightMap();
 

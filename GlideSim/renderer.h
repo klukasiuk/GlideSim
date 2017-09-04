@@ -17,7 +17,7 @@ class Renderer
 {
 private :
 
-	PointLight       pointLight;
+
 	DirectionalLight directionalLight;
 
 	vector<Material> materials_vec;
@@ -35,6 +35,8 @@ private :
 	Material plane_mat;
 
 public :
+
+	PointLight       pointLight;
 
 	void init();
 

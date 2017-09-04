@@ -2,6 +2,28 @@
 
 #include "core.h"
 
+vector<int> HeightMap::find_neighbours(vec3 chunk_pos)
+{
+	vector<int> neighbours;
+
+	for (int a = 0; a < chunks.size(); a++)
+	{
+		float distance;
+
+
+		vec3 dir = chunks[a].position - chunk_pos;
+
+		distance = glm::length(dir);
+
+		if (fabs(distance - chunk_size) > 0.01)
+			continue;
+
+		neighbours.push_back(a);
+	}
+
+	return neighbours;
+}
+
 void HeightMap::create_chunk(vec3 pos)
 {
 	Chunk new_chunk;
@@ -23,11 +45,77 @@ void HeightMap::create_chunk(vec3 pos)
 
 			vertices.push_back(vec3(x*step, amplitude, z*step));
 
-			vec3 color = vec3(1, 0, 0) * (amplitude / map_amplitude) + vec3(0, 1, 0)*(1.0f - amplitude / map_amplitude);
+			vec3 color = vec3(13.0/255, 181.0/255, 55.0/255);
+
+			//vec3 color = vec3(1, 0, 0) * (amplitude / map_amplitude) + vec3(0, 1, 0)*(1.0f - amplitude / map_amplitude);
 
 			colors.push_back(color);
 		}
 	}
+
+	vector<int> neighbours = find_neighbours(pos);
+
+	for (int i = 0; i < neighbours.size(); i++)
+	{
+		int id = neighbours[i];
+
+		vec3 dir = chunks[id].position - pos;
+
+		dir = glm::normalize(dir);
+
+		if ((int)dir.x == 1)
+		{
+			for (int i = 0; i < segments + 1; i++)
+			{
+				vertices[(segments + 1)*(segments)+i].y = chunks[id].border_down[i];
+			}
+		}
+
+		if ((int)dir.x == -1)
+		{
+			for (int i = 0; i < segments + 1; i++)
+			{
+				vertices[i].y = chunks[id].border_top[i];
+			}
+		}
+
+		if ((int)dir.z == -1)
+		{
+			for (int i = 0; i < segments + 1; i++)
+			{
+				vertices[(segments + 1) * i].y = chunks[id].border_right[i];
+			}
+		}
+
+		if ((int)dir.z == 1)
+		{
+			for (int i = 0; i < segments + 1; i++)
+			{
+				vertices[(segments + 1) * i + (segments)].y = chunks[id].border_left[i];
+			}
+		}
+	}
+
+	for (int i = 0; i < (segments + 1); i++)
+	{
+		new_chunk.border_top.push_back(vertices[(segments + 1)*(segments) + i].y);
+	}
+
+	for (int i = 0; i < (segments + 1); i++)
+	{
+		new_chunk.border_down.push_back(vertices[i].y);
+	}
+
+	for (int i = 0; i < (segments + 1); i++)
+	{
+		new_chunk.border_left.push_back(vertices[(segments + 1) * i].y);
+	}
+
+	for (int i = 0; i < (segments + 1); i++)
+	{
+		new_chunk.border_right.push_back(vertices[(segments + 1) * i + (segments)].y);
+	}
+
 
 	for (int x = 0; x < segments; x++)
 	{
@@ -94,13 +182,31 @@ void HeightMap::create_chunk(vec3 pos)
 	chunks.push_back(new_chunk);
 }
 
+bool HeightMap::check_if_chunk_exist(vec3 pos)
+{
+	int chunk_pos_x = (int)(floorf(pos.x / chunk_size) * chunk_size);
+	int chunk_pos_z = (int)(floorf(pos.z / chunk_size) * chunk_size);
+
+
+	for (unsigned int i = 0; i < chunks.size(); i++)
+	{
+		if (chunk_pos_x == chunks[i].position.x && chunk_pos_z == chunks[i].position.z)
+		{
+			return true;
+		}
+	}
+
+	return false;
+}
+
+
 HeightMap::HeightMap()
 {
-	chunk_size = 500;
+	chunk_size = 200;
 
-	segments = 60;
+	segments = 50;
 
-	map_amplitude = 12.0;
+	map_amplitude = 8.0;
 }
 
 void HeightMap::update()
@@ -110,20 +216,17 @@ void HeightMap::update()
 	int chunk_pos_x = (int)(floorf(cam_pos.x / chunk_size) * chunk_size);
 	int chunk_pos_z = (int)(floorf(cam_pos.z / chunk_size) * chunk_size);
 
-
-	bool chunk_exists = false;
-
-	for (unsigned int i = 0; i < chunks.size(); i++)
+	for (int x = -3; x < 4; x++)
+	for (int z = -3; z < 4; z++)
 	{
-		if (chunk_pos_x == chunks[i].position.x && chunk_pos_z == chunks[i].position.z)
+		vec3 new_chunk_pos = vec3(chunk_pos_x + x*chunk_size, 0, chunk_pos_z + z*chunk_size);
+
+		if (check_if_chunk_exist(new_chunk_pos) == false)
 		{
-			chunk_exists = true;
-			break;
+			create_chunk(new_chunk_pos);
+
 		}
 	}
-
-	if (chunk_exists == false)
-		create_chunk(vec3(chunk_pos_x,0, chunk_pos_z));
 }
 
 void HeightMap::render(Shader * shader)
@@ -136,9 +239,14 @@ void HeightMap::render(Shader * shader)
 
 		model_mat = glm::translate(model_mat, chunks[i].position);
 
-		glm::mat4 mvp = vp * model_mat;
+		shader->setVec3("lightColor", 1.0f, 1.0f, 1.0f);
+		shader->setVec3("lightPos", core::renderer.pointLight.position);
 
-		shader->setMat4("MVP", mvp);
+		glm::mat4 MVP = core::camera.getProj() * core::camera.getView() * model_mat;
+
+		shader->setMat4("M", model_mat);
+		shader->setMat4("V", core::camera.getView());
+		shader->setMat4("MVP", MVP);
 
 		glBindVertexArray(chunks[i].vao);
 
