@@ -70,4 +70,7 @@ void render_cube(glm::vec3 position, float scale, Shader * shader)
 	glUniformMatrix4fv(MvpID, 1, GL_FALSE, &mvp[0][0]);
 
 	glDrawArrays(GL_TRIANGLES, 0, 12 * 3);
+
+	glDeleteVertexArrays(1, &VAO);
+	glDeleteBuffers(1, &VBO);
 }

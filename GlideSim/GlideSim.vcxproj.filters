@@ -60,11 +60,14 @@
     <Filter Include="GLSL">
       <UniqueIdentifier>{3fb410e2-b29b-4dbc-b291-7d81d91d4baf}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\App">
+      <UniqueIdentifier>{8fbde7b6-069f-4651-9aca-b7e44ec6a0a9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\App">
+      <UniqueIdentifier>{21979f0d-cc27-46ed-81b9-2b131e63cec8}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="main_app.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -143,11 +146,11 @@
     <ClCompile Include="height_map.cpp">
       <Filter>Source Files\Simulation</Filter>
     </ClCompile>
+    <ClCompile Include="main_app.cpp">
+      <Filter>Source Files\App</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="main_app.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="..\Libs\include\ASSIMP\ai_assert.h">
       <Filter>External Libs\Assimp</Filter>
     </ClInclude>
@@ -441,6 +444,9 @@
     </ClInclude>
     <ClInclude Include="primitives.h">
       <Filter>Header Files\Rendering</Filter>
+    </ClInclude>
+    <ClInclude Include="main_app.h">
+      <Filter>Header Files\App</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
