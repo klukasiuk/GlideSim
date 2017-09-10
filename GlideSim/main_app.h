@@ -5,6 +5,9 @@
 #include <string>
 
 #include "timer.h"
+#include "render_thread.h"
+#include "physics_thread.h"
+#include "loader_thread.h"
 
 using std::vector;
 using std::thread;
@@ -15,15 +18,15 @@ class MainApplication
 {
 private :
 
-	const string app_name = "GlideSim";
-	const string version  = "dev05";
+	string app_name = "GlideSim";
+	string version  = "dev06";
 
 	int window_width = 1200;
 	int window_height = 800;
 
 	bool run;
 
-	vector<thread> app_threads;
+	vector<AppThread> app_threads;
 
 	FpsCounter  fpsCounter;
 	FpsGovernor fpsGovernor;

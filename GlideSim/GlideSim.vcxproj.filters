@@ -42,9 +42,6 @@
     <Filter Include="Source Files\Core">
       <UniqueIdentifier>{b0912a7b-5979-4c9d-a644-136e867ebc1d}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Files\Rendering">
-      <UniqueIdentifier>{39770da6-3d9c-43fe-8b10-4d91faf523b1}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Header Files\Simulation">
       <UniqueIdentifier>{12ec8c20-7430-4c9c-8ed9-74dc1aba2974}</UniqueIdentifier>
     </Filter>
@@ -60,11 +57,17 @@
     <Filter Include="GLSL">
       <UniqueIdentifier>{3fb410e2-b29b-4dbc-b291-7d81d91d4baf}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\App">
+      <UniqueIdentifier>{2ea84801-b280-498e-8d0a-9ed7859fc765}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\App">
+      <UniqueIdentifier>{4637aa1c-2112-4ec5-8be7-f168949934e0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Rendering">
+      <UniqueIdentifier>{39770da6-3d9c-43fe-8b10-4d91faf523b1}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="main_app.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -143,11 +146,20 @@
     <ClCompile Include="height_map.cpp">
       <Filter>Source Files\Simulation</Filter>
     </ClCompile>
+    <ClCompile Include="main_app.cpp">
+      <Filter>Source Files\App</Filter>
+    </ClCompile>
+    <ClCompile Include="loader_thread.cpp">
+      <Filter>Source Files\App</Filter>
+    </ClCompile>
+    <ClCompile Include="physics_thread.cpp">
+      <Filter>Source Files\App</Filter>
+    </ClCompile>
+    <ClCompile Include="render_thread.cpp">
+      <Filter>Source Files\App</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="main_app.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="..\Libs\include\ASSIMP\ai_assert.h">
       <Filter>External Libs\Assimp</Filter>
     </ClInclude>
@@ -441,6 +453,21 @@
     </ClInclude>
     <ClInclude Include="primitives.h">
       <Filter>Header Files\Rendering</Filter>
+    </ClInclude>
+    <ClInclude Include="main_app.h">
+      <Filter>Header Files\App</Filter>
+    </ClInclude>
+    <ClInclude Include="render_thread.h">
+      <Filter>Header Files\App</Filter>
+    </ClInclude>
+    <ClInclude Include="loader_thread.h">
+      <Filter>Header Files\App</Filter>
+    </ClInclude>
+    <ClInclude Include="physics_thread.h">
+      <Filter>Header Files\App</Filter>
+    </ClInclude>
+    <ClInclude Include="app_thread.h">
+      <Filter>Header Files\App</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

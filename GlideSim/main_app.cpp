@@ -27,11 +27,6 @@ void MainApplication::start()							// Start method is also main loop
 	release();
 }
 
-void MainApplication::stop()
-{
-	run = false;
-}
-
 
 void MainApplication::init()
 {
